@@ -1,0 +1,13 @@
+name: "Tareas"
+output_dir: "."
+navbar:
+  title: "Tareas"
+  left:
+    - text: "Lista"
+      href: index.html
+    - text: "Alumno"
+      href: about.html
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate
