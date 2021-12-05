@@ -1,0 +1,7 @@
+---
+title: "Tarea 3. Pregunta 7."
+---
+
+### Para el modelo con componente aleatorio binomial negativo exhibe la liga canónica y la interpretación de los parámetros.
+
+

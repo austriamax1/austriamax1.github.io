@@ -1,0 +1,6 @@
+---
+title: "Tarea 4. Pregunta 1."
+---
+
+### Considera el modelo de efectos aleatorios \[\log(\frac{P(Y_{it} = 1)}{1- P(Y_{it} = 1)}) = \alpha + \beta_t + u_t\]  con $u_i$ distribuida normal con media cero y variaza $\sigma^2$ y el modelo marginal \[\log(\frac{P(Y_{it} = 1)}{1- P(Y_{it} = 1)}) = \alpha + \gamma_t.\] Con la restricción $\gamma_1 = 0$. Explica porque si todos los $\beta = 0$ implica que todos los $\gamma  = 0$. ¿Es cierto lo contrario? 
+

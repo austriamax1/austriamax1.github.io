@@ -1,0 +1,6 @@
+---
+title: "Tarea 4. Pregunta 4."
+---
+
+### Con los datos hospitales ajusta un modelo con efectos aleatorios ya sea un modelo mixto o hglm y compara los resultados con los de la tarea anterior.
+

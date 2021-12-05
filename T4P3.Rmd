@@ -1,0 +1,6 @@
+---
+title: "Tarea 4. Pregunta 3."
+---
+
+### Los datos del archivo tarea4 representan los datos para 118 sujetos que participaron en un estudio para ver si beber el yogurt después de una comida muy contaminada les ayudaba con la indigestión. La manera de medir la respuesta era sobre una línea donde con una cruz indicaban como se sentían. La longitud de la línea (da) se normalizo a 100(pda), cualquiera de las dos puede ser la variable respuesta. Las variables explicativas son: género, edad, y si el individuo tenia helicobacter o no, medida en dos maneras una con la concentración encontrada y otro como presencia o ausencia. El objetivo es ver si el yogurt v es  mejor que el yogurt r.
+

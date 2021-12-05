@@ -1,0 +1,6 @@
+---
+title: "Tarea 3. Pregunta 4."
+---
+
+### Para el modelo $g(\mathbb{P}(Y \leq k)) = \alpha_k + \beta x$, demuestra que $\mathbb{P}(Y\leq k |x) = \mathbb{P}(Y \leq j |x^{*})$ para $1 \leq j < k \leq J$, con $J$ el número de categorías  de la respuesta y $x^{*}$ se obtiene reemplazando cada componente de $x$ por $\frac{\alpha_k - \alpha_j}{x_i}$. Interpreta que quiere decir esto.
+

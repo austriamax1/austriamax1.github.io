@@ -1,0 +1,8 @@
+---
+title: "Tarea 3. Pregunta 3."
+---
+
+### Los datos de la tabla corresponden a compras de café instantáneo. Ajusta los modelos de simetría, homogeneidad marginal y cuasi independencia e interpreta.
+
+![](T3P3_1.jpg)
+![](T3P3_2.jpg)

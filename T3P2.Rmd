@@ -1,0 +1,20 @@
+---
+title: "Tarea 3. Pregunta 2."
+---
+
+### Los datos en el archivo tarea3.xls representan
+
+\[\begin{align*}
+\mbox{ LOS}.& \mbox{ Length of stay in hospital (in days).}\\
+\mbox{ Hospital}.& \mbox{ The hospital.}\\
+\mbox{ Insurer}.& \mbox{ The insurer, either 0 or 1.}\\
+\mbox{ Age}.& \mbox{ The age of the patient.}\\
+\mbox{ Gender}.& \mbox{ The gender of the patient: 1 means Female, 0 means male.}\\
+\mbox{ Race}.& \mbox{ The race of the patient: 1 means white, 2 means hispanic, 3 means black, 4 means Asian/Pacific Islander, 5 means Other.}\\
+\mbox{ BedSize}.& \mbox{ The number of beds in the hospital: 1 means 1 to 99, 2 means 100 to 249, 3 means 250 to 400, 4 means 401 to 650.}\\
+\mbox{ Owner}.& \mbox{ The hospital owner: 1 means public, 2 means private.}\\
+\mbox{ Compl}.& \mbox{ If there were any treatment complication: 0 means no complications, 1 means complications.}\\
+\end{align*}\]
+
+La variable respuesta LOS no puede tomar el valor cero, ajusta modelos para conteos (poisson o binomial negativo) que consideren este hecho y modelos que no lo consideren y compara tus resultados. Realiza análisis post ajuste y comenta.
+

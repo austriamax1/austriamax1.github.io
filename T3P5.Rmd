@@ -1,0 +1,6 @@
+---
+title: "Tarea 3. Pregunta 5."
+---
+
+### Considera el modelo $g(\frac{p_j}{p_j + \dots + p_K}) = \alpha_j + \beta_j' x$ para $j = 1, \dots, K-1$. Explica por qué y cómo este modelo puede ser ajustado por separado para $j = 1, \dots, K-1$.
+

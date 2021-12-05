@@ -1,0 +1,5 @@
+---
+title: "Tarea 3. Pregunta 6."
+---
+
+### Una variable ordinal de respuesta tiene las categorías: completamente de acuerdo, de acuerdo, en desacuerdo y completamente en desacuerdo, pero adicionalmente permite contestar no sé. Una manera de analizar seria considerar un modelo logístico para no sé contra todo lo demás y un modelo ordinal para el resto. ¿Cómo escribirías la verosimilitud?, ¿De qué otra forma sugerirías analizarlo?

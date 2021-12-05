@@ -1,0 +1,7 @@
+---
+title: "Tarea 4. Pregunta 2."
+---
+
+### La tabla se refieres a un ensayo clínico cruzado con tres tratamientos, para evaluar dos analgésicos. Se compara un placebo (A), un tratamiento de dosis bajo (B) y un tratamiento de dosis alta (C). Los pacientes están divididos aleatoriamente en seis grupos, las formas posibles de administrar los tratamientos. AL final de cada período, cada sujeto responde si tuvo alivio o no. Si $y_{itk} = 1$ denota alivio para el sujeto $i$, en la secuencia $k$, usando el tratamiento $t$ ($t = A,B,C). Ajusta un modelo (entre marginal, efectos aleatorios y de transición) y di porque escoges ese.
+
+![](T4P2Tabla1.jpg)

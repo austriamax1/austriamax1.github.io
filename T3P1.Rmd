@@ -1,0 +1,17 @@
+---
+title: "Tarea 3. Pregunta 1."
+---
+
+### La tabla presenta los resultados que tuvieron pasajeros en vehículos accidentados,de acuerdo al género, el lugar del accidente y el uso de cinturón de seguridad. Las categorías de resultado son:
+
+\[\begin{align*}
+1.& \mbox{ No se lastimo.}\\
+2.& \mbox{ Lastimado, pero sin necesidad de ser transportado en ambulancia.}\\
+3.& \mbox{ Lastimado, transportado por ambulancia, pero no hospitalizado.}\\
+4.& \mbox{ Lastimado, hospitalizado, pero sobrevivió.}\\
+5.& \mbox{ Muerto.}
+\end{align*}\]
+
+Ajusta un modelo de asociación es decir considerando que no existe una variable respuesta y después ajusta dos modelos considerando que la variable resultado es repuesta uno considerando la variable resultado no ordenada y un modelo considerándola ordenada. Comenta tus resultados.
+
+![Tabla 1](T3P1Tabla1.jpg)
