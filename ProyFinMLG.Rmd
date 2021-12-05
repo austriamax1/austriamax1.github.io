@@ -1,0 +1,6 @@
+---
+title: "Tarea 4. Pregunta 4."
+---
+
+### Los datos representan muestras que se examinaron como sospechosas de influenza, hay varias variables que se pueden considerar como variables respuesta, la idea es ver si el comportamiento en el tiempo ha sido diferente para los diferentes tipos de influenza, y ver si hay períodos de tiempo si alguna tipo de influenza es mas común.
+
