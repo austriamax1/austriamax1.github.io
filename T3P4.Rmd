@@ -2,5 +2,19 @@
 title: "Tarea 3. Pregunta 4."
 ---
 
-### Para el modelo $g(\mathbb{P}(Y \leq k)) = \alpha_k + \beta x$, demuestra que $\mathbb{P}(Y\leq k |x) = \mathbb{P}(Y \leq j |x^{*})$ para $1 \leq j < k \leq J$, con $J$ el número de categorías  de la respuesta y $x^{*}$ se obtiene reemplazando cada componente de $x$ por $\frac{\alpha_k - \alpha_j}{x_i}$. Interpreta que quiere decir esto.
+### Para el modelo $g(\mathbb{P}(Y \leq k)) = \alpha_k + \beta x$, demuestra que $\mathbb{P}(Y\leq k |x) = \mathbb{P}(Y \leq j |x^{*})$ para $1 \leq j < k \leq J$, con $J$ el número de categorías  de la respuesta y $x^{*}$ se obtiene reemplazando cada componente de $x$ por $x + \frac{\alpha_k - \alpha_j}{\beta}$. Interpreta que quiere decir esto.
 
+Demostración:
+
+Supongamos que para una $p \in (0,1)$ fija, tenemos que $g(p) = g(\mathbb{P}(Y \leq k)) = \alpha_k + \beta x$ para alguna $x$ y nos gustaría saber cuanto deberíamos cambiar $x$ para que $Y$ sea menor igual a $j$ con la misma probabiidad.
+
+\[\begin{align*}
+0 &= g(\mathbb{P}(Y \leq k)) - g(\mathbb{P}(Y \leq k|x^{*}))\\\\
+&= (\alpha_k + \beta x) - (\alpha_j + \beta x^{*})\\\\
+& = (\alpha_k - \alpha_j) + \beta(x-x^{*})\\\\
+&\implies x^{*}=x +  \frac{\alpha_k - \alpha_j}{\beta}
+\end{align*}\]
+
+De esta manera, al cambiar de $x$ a $x +  \frac{\alpha_k - \alpha_j}{\beta}$ tenemos que la probabilidad de obtener $Y\leq k$ es la misma que $Y \leq j$. 
+
+En este caso, $\beta$ es un factor de escala para los interceptos y sus magnitudes determinan la probabilidad ``base'' (cuando $x  =0$).

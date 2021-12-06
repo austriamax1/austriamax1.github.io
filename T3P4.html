@@ -264,8 +264,18 @@ $(document).ready(function () {
 </div>
 
 
-<div id="para-el-modelo-gmathbbpy-leq-k-alpha_k-beta-x-demuestra-que-mathbbpyleq-k-x-mathbbpy-leq-j-x-para-1-leq-j-k-leq-j-con-j-el-número-de-categorías-de-la-respuesta-y-x-se-obtiene-reemplazando-cada-componente-de-x-por-fracalpha_k---alpha_jx_i.-interpreta-que-quiere-decir-esto." class="section level3">
-<h3>Para el modelo <span class="math inline">\(g(\mathbb{P}(Y \leq k)) = \alpha_k + \beta x\)</span>, demuestra que <span class="math inline">\(\mathbb{P}(Y\leq k |x) = \mathbb{P}(Y \leq j |x^{*})\)</span> para <span class="math inline">\(1 \leq j &lt; k \leq J\)</span>, con <span class="math inline">\(J\)</span> el número de categorías de la respuesta y <span class="math inline">\(x^{*}\)</span> se obtiene reemplazando cada componente de <span class="math inline">\(x\)</span> por <span class="math inline">\(\frac{\alpha_k - \alpha_j}{x_i}\)</span>. Interpreta que quiere decir esto.</h3>
+<div id="para-el-modelo-gmathbbpy-leq-k-alpha_k-beta-x-demuestra-que-mathbbpyleq-k-x-mathbbpy-leq-j-x-para-1-leq-j-k-leq-j-con-j-el-número-de-categorías-de-la-respuesta-y-x-se-obtiene-reemplazando-cada-componente-de-x-por-x-fracalpha_k---alpha_jbeta.-interpreta-que-quiere-decir-esto." class="section level3">
+<h3>Para el modelo <span class="math inline">\(g(\mathbb{P}(Y \leq k)) = \alpha_k + \beta x\)</span>, demuestra que <span class="math inline">\(\mathbb{P}(Y\leq k |x) = \mathbb{P}(Y \leq j |x^{*})\)</span> para <span class="math inline">\(1 \leq j &lt; k \leq J\)</span>, con <span class="math inline">\(J\)</span> el número de categorías de la respuesta y <span class="math inline">\(x^{*}\)</span> se obtiene reemplazando cada componente de <span class="math inline">\(x\)</span> por <span class="math inline">\(x + \frac{\alpha_k - \alpha_j}{\beta}\)</span>. Interpreta que quiere decir esto.</h3>
+<p>Demostración:</p>
+<p>Supongamos que para una <span class="math inline">\(p \in (0,1)\)</span> fija, tenemos que <span class="math inline">\(g(p) = g(\mathbb{P}(Y \leq k)) = \alpha_k + \beta x\)</span> para alguna <span class="math inline">\(x\)</span> y nos gustaría saber cuanto deberíamos cambiar <span class="math inline">\(x\)</span> para que <span class="math inline">\(Y\)</span> sea menor igual a <span class="math inline">\(j\)</span> con la misma probabiidad.</p>
+<p><span class="math display">\[\begin{align*}
+0 &amp;= g(\mathbb{P}(Y \leq k)) - g(\mathbb{P}(Y \leq k|x^{*}))\\\\
+&amp;= (\alpha_k + \beta x) - (\alpha_j + \beta x^{*})\\\\
+&amp; = (\alpha_k - \alpha_j) + \beta(x-x^{*})\\\\
+&amp;\implies x^{*}=x +  \frac{\alpha_k - \alpha_j}{\beta}
+\end{align*}\]</span></p>
+<p>De esta manera, al cambiar de <span class="math inline">\(x\)</span> a <span class="math inline">\(x + \frac{\alpha_k - \alpha_j}{\beta}\)</span> tenemos que la probabilidad de obtener <span class="math inline">\(Y\leq k\)</span> es la misma que <span class="math inline">\(Y \leq j\)</span>.</p>
+<p>En este caso, <span class="math inline">\(\beta\)</span> es un factor de escala para los interceptos y sus magnitudes determinan la probabilidad ``base’’ (cuando <span class="math inline">\(x =0\)</span>).</p>
 </div>
 
 
