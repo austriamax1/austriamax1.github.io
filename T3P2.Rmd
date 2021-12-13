@@ -18,3 +18,13 @@ title: "Tarea 3. Pregunta 2."
 
 La variable respuesta LOS no puede tomar el valor cero, ajusta modelos para conteos (poisson o binomial negativo) que consideren este hecho y modelos que no lo consideren y compara tus resultados. Realiza análisis post ajuste y comenta.
 
+-----------------------------------------------------------------------
+Considerando offset
+-----------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------
+Sin considerar Offset
+-----------------------------------------------------------------------
+
+
