@@ -264,9 +264,53 @@ $(document).ready(function () {
 </div>
 
 
-<div id="la-tabla-se-refieres-a-un-ensayo-clínico-cruzado-con-tres-tratamientos-para-evaluar-dos-analgésicos.-se-compara-un-placebo-a-un-tratamiento-de-dosis-bajo-b-y-un-tratamiento-de-dosis-alta-c.-los-pacientes-están-divididos-aleatoriamente-en-seis-grupos-las-formas-posibles-de-administrar-los-tratamientos.-al-final-de-cada-período-cada-sujeto-responde-si-tuvo-alivio-o-no.-si-y_itk-1-denota-alivio-para-el-sujeto-i-en-la-secuencia-k-usando-el-tratamiento-t-t-abc.-ajusta-un-modelo-entre-marginal-efectos-aleatorios-y-de-transición-y-di-porque-escoges-ese." class="section level3">
-<h3>La tabla se refieres a un ensayo clínico cruzado con tres tratamientos, para evaluar dos analgésicos. Se compara un placebo (A), un tratamiento de dosis bajo (B) y un tratamiento de dosis alta (C). Los pacientes están divididos aleatoriamente en seis grupos, las formas posibles de administrar los tratamientos. AL final de cada período, cada sujeto responde si tuvo alivio o no. Si <span class="math inline">\(y_{itk} = 1\)</span> denota alivio para el sujeto <span class="math inline">\(i\)</span>, en la secuencia <span class="math inline">\(k\)</span>, usando el tratamiento <span class="math inline">\(t\)</span> ($t = A,B,C). Ajusta un modelo (entre marginal, efectos aleatorios y de transición) y di porque escoges ese.</h3>
+<div id="la-tabla-refiere-a-un-ensayo-clínico-cruzado-con-tres-tratamientos-para-evaluar-dos-analgésicos.-se-compara-un-placebo-a-un-tratamiento-de-dosis-baja-b-y-un-tratamiento-de-dosis-alta-c.-los-pacientes-están-divididos-aleatoriamente-en-seis-grupos-las-formas-posibles-de-administrar-los-tratamientos.-al-final-de-cada-período-cada-sujeto-responde-si-tuvo-alivio-o-no.-si-y_itk-1-denota-alivio-para-el-sujeto-i-en-la-secuencia-k-usando-el-tratamiento-t-t-abc.-ajusta-un-modelo-entre-marginal-efectos-aleatorios-y-de-transición-y-di-porque-escoges-ese." class="section level3">
+<h3>La tabla refiere a un ensayo clínico cruzado con tres tratamientos, para evaluar dos analgésicos. Se compara un placebo (A), un tratamiento de dosis baja (B) y un tratamiento de dosis alta (C). Los pacientes están divididos aleatoriamente en seis grupos, las formas posibles de administrar los tratamientos. Al final de cada período, cada sujeto responde si tuvo alivio o no. Si <span class="math inline">\(y_{itk} = 1\)</span> denota alivio para el sujeto <span class="math inline">\(i\)</span>, en la secuencia <span class="math inline">\(k\)</span>, usando el tratamiento <span class="math inline">\(t\)</span> ($t = A,B,C). Ajusta un modelo (entre marginal, efectos aleatorios y de transición) y di porque escoges ese.</h3>
 <p><img src="T4P2Tabla1.jpg" /></p>
+<p>Solución:</p>
+<p>La siguiente gráfica muestra el porcentaje de personas con alivio separado por tratamientos.</p>
+<p><img src="T4P2_descriptiva.png" /></p>
+<p>Lo anterior nos sugiere que comenzar con dosis altas no parece ser lo más provechoso. Y parece que hay un efecto de “memoria”. Por lo anterior se elige un modelo marginal con el tiempo como covariable y el tipo de tratamiento como individuo.</p>
+<pre class="r"><code>#Ajustando el modelo
+modelo = geepack::geeglm(cbind(Nalivio,Total) ~ Tipo + Dosis2 +Dosis3,
+               family = binomial(link = &quot;logit&quot;),
+               data = T4P2_tabla,
+               id = Tratamiento,
+               corstr = &quot;ar1&quot;)
+
+#No se encontró evidencia de que el medicamento funcione
+summary(modelo)</code></pre>
+<pre><code>## 
+## Call:
+## geepack::geeglm(formula = cbind(Nalivio, Total) ~ Tipo + Dosis2 + 
+##     Dosis3, family = binomial(link = &quot;logit&quot;), data = T4P2_tabla, 
+##     id = Tratamiento, corstr = &quot;ar1&quot;)
+## 
+##  Coefficients:
+##             Estimate Std.err   Wald Pr(&gt;|W|)    
+## (Intercept)  -1.4437  0.1250 133.32   &lt;2e-16 ***
+## TipoB        -0.1692  0.1061   2.54     0.11    
+## TipoC         0.0403  0.0710   0.32     0.57    
+## Dosis2        1.1748  0.1352  75.52   &lt;2e-16 ***
+## Dosis3        1.2615  0.1199 110.69   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Correlation structure = ar1 
+## Estimated Scale Parameters:
+## 
+##             Estimate Std.err
+## (Intercept)  0.00659 0.00198
+##   Link = identity 
+## 
+## Estimated Correlation Parameters:
+##       Estimate Std.err
+## alpha        0       0
+## Number of clusters:   18  Maximum cluster size: 1</code></pre>
+<p>No hay evidencia de que el medicamento funcione mejor que el placebo. Después de las tres dosis hay una mejora, pero no hay evidencia que sea por el medicamento (simplemento por el paso del tiempo).</p>
+<pre class="r"><code>#Residuales
+plot(modelo)</code></pre>
+<p><img src="T4P2_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
 
 

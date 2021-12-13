@@ -1,0 +1,5 @@
+---
+title: "Tarea 4. Pregunta 12.B."
+---
+
+###  (Computer Experiment.) Let $\lambda_0 = 1$, $n = 20$ and $alpha = .05$. Simulate $X_1, \dots, X_n \sim Poisson(\lambda_0)$ and perform the Wald test. Repeat many times and count how often you reject the null. How close is the type I error rate to .05?

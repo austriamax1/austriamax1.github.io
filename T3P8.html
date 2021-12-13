@@ -264,8 +264,51 @@ $(document).ready(function () {
 </div>
 
 
-<div id="cuál-es-la-liga-canónica-para-la-familia-tweedie-y-cómo-se-relaciona-con-la-gamma-y-la-inversa-gausiana" class="section level3">
-<h3>¿Cuál es la liga canónica para la familia Tweedie? Y ¿cómo se relaciona con la gamma y la inversa gausiana?</h3>
+<div id="cuál-es-la-liga-canónica-para-la-familia-tweedie" class="section level3">
+<h3>¿Cuál es la liga canónica para la familia Tweedie?</h3>
+<p>De acuerdo con:</p>
+<p>Nisa, K., Herawati, N., Setiawan, E., &amp; Nusyirwan, N. (2017). On Tweedie Family Distributions and Their Extensions. In MAKALAH SEMINAR NASIONAL METODE KUANTITATIF 2018.</p>
+<p>La función cumulante de la familia Tweedie se puede expresar como:</p>
+<p><span class="math display">\[   
+K(\theta) = 
+     \begin{cases}
+       \exp(\theta) &amp;\quad\text{Si} \quad p = 1\\\\
+       -\log(-\theta)  &amp;\quad\text{Si} \quad p = 2\\\\
+       [\frac{1}{2-p}][(1-p)\theta]^{\frac{p-2}{p-1}} &amp;\quad\text{En otro caso.}
+     \end{cases}
+\]</span></p>
+<p>Ahora nos gustaria calcular <span class="math inline">\(K&#39;(\theta)\)</span> para poder encontrar su función inversa (es decir, la liga canónica).</p>
+<p><span class="math display">\[   
+K&#39;(\theta) = 
+     \begin{cases}
+       \exp(\theta) &amp;\quad\text{Si} \quad p = 1\\\\
+       -\frac{1}{\theta}  &amp;\quad\text{Si} \quad p = 2\\\\
+       -[(1-p)\theta]^{-\frac{1}{p-1}} &amp;\quad\text{En otro caso.}
+     \end{cases}
+\]</span></p>
+<p>Luego, la liga canónica es la siguiente de acuerdo con <span class="math inline">\(p\)</span></p>
+<p><span class="math display">\[   
+(K&#39;)^{-1}(\theta) = 
+     \begin{cases}
+       \log(\theta) &amp;\quad\text{Si} \quad p = 1\\\\
+       -\frac{1}{\theta}  &amp;\quad\text{Si} \quad p = 2\\\\
+       (1-p)^{-1}\theta^{-(p-1)} &amp;\quad\text{En otro caso.}
+     \end{cases}
+\]</span></p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Y ¿cómo se relaciona con la gamma y la inversa gausiana?</td>
+</tr>
+</tbody>
+</table>
+<p>Sabemos que la distribución gamma se obtiene cuando <span class="math inline">\(p = 2\)</span> y la inversa gausiana cuando <span class="math inline">\(p = 3\)</span>.</p>
+<p>Así las ligas canónocas son</p>
+<p><span class="math display">\[\begin{align*}
+-\frac{1}{\mu} &amp;\quad (\mbox{Gamma})\\\\
+-\frac{2}{\mu^2} &amp;\quad (\mbox{Inversa Gausiana})
+\end{align*}\]</span></p>
+<p>La liga canónica de la inversa gausiana es proporcional a la varianza del modelo gamma.</p>
 </div>
 
 

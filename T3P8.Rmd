@@ -2,5 +2,57 @@
 title: "Tarea 3. Pregunta 8."
 ---
 
-### ¿Cuál es la liga canónica para la familia Tweedie? Y ¿cómo se relaciona con la gamma y la inversa gausiana?
+### ¿Cuál es la liga canónica para la familia Tweedie?
+
+De acuerdo con:
+
+Nisa, K., Herawati, N., Setiawan, E., & Nusyirwan, N. (2017). On Tweedie Family Distributions and Their Extensions. In MAKALAH SEMINAR NASIONAL METODE KUANTITATIF 2018.
+
+La función cumulante de la familia Tweedie se puede expresar como:
+
+\[   
+K(\theta) = 
+     \begin{cases}
+       \exp(\theta) &\quad\text{Si} \quad p = 1\\\\
+       -\log(-\theta)  &\quad\text{Si} \quad p = 2\\\\
+       [\frac{1}{2-p}][(1-p)\theta]^{\frac{p-2}{p-1}} &\quad\text{En otro caso.}
+     \end{cases}
+\]
+
+Ahora nos gustaria calcular $K'(\theta)$ para poder encontrar su función inversa (es decir, la liga canónica).
+
+\[   
+K'(\theta) = 
+     \begin{cases}
+       \exp(\theta) &\quad\text{Si} \quad p = 1\\\\
+       -\frac{1}{\theta}  &\quad\text{Si} \quad p = 2\\\\
+       -[(1-p)\theta]^{-\frac{1}{p-1}} &\quad\text{En otro caso.}
+     \end{cases}
+\]
+
+Luego, la liga canónica es la siguiente de acuerdo con $p$
+
+\[   
+(K')^{-1}(\theta) = 
+     \begin{cases}
+       \log(\theta) &\quad\text{Si} \quad p = 1\\\\
+       -\frac{1}{\theta}  &\quad\text{Si} \quad p = 2\\\\
+       (1-p)^{-1}\theta^{-(p-1)} &\quad\text{En otro caso.}
+     \end{cases}
+\]
+
+------------------------------------------------------------------
+Y ¿cómo se relaciona con la gamma y la inversa gausiana?
+------------------------------------------------------------------
+
+Sabemos que la distribución gamma se obtiene cuando $p = 2$ y la inversa gausiana cuando $p = 3$.
+
+Así las ligas canónocas son
+
+\[\begin{align*}
+-\frac{1}{\mu} &\quad (\mbox{Gamma})\\\\
+-\frac{2}{\mu^2} &\quad (\mbox{Inversa Gausiana})
+\end{align*}\]
+
+La liga canónica de la inversa gausiana es proporcional a la varianza del modelo gamma.
 

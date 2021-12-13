@@ -11,7 +11,7 @@
 
 
 
-<title>Tarea 3. Pregunta 6.</title>
+<title>Tarea 4. Pregunta 12.B.</title>
 
 <script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -259,32 +259,47 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Tarea 3. Pregunta 6.</h1>
+<h1 class="title toc-ignore">Tarea 4. Pregunta 12.B.</h1>
 
 </div>
 
 
-<div id="una-variable-ordinal-de-respuesta-tiene-las-categorías-completamente-de-acuerdo-de-acuerdo-en-desacuerdo-y-completamente-en-desacuerdo-pero-adicionalmente-permite-contestar-no-sé.-una-manera-de-analizar-seria-considerar-un-modelo-logístico-para-no-sé-contra-todo-lo-demás-y-un-modelo-ordinal-para-el-resto." class="section level3">
-<h3>Una variable ordinal de respuesta tiene las categorías: completamente de acuerdo, de acuerdo, en desacuerdo y completamente en desacuerdo, pero adicionalmente permite contestar no sé. Una manera de analizar seria considerar un modelo logístico para no sé contra todo lo demás y un modelo ordinal para el resto.</h3>
-<p>¿Cómo escribirías la verosimilitud?</p>
-<p>Escribiría la verosimilitud como <span class="math display">\[\mathbb{P}(C=c) = [1-g^{-1}(X\beta^{(1)})]1_{C = 0} + pf_C(c)1_{C = 1, \dots, K}\]</span> Donde <span class="math display">\[\begin{align*}
-(C=0)&amp;:= \mbox{No respuesta.}\\\\
-p &amp;:= \mbox{Probabilidad de obtener una respuesta.}\\\\
-f&amp;:= \mbox{Densidad del modelo ordinal.}\\\\
-g&amp;:= \mbox{Función logit.}\\\\
-\end{align*}\]</span></p>
-<p><img src="OrdinalCeroInflado.jpg" /></p>
-<p>¿De qué otra forma sugerirías analizarlo?</p>
-<p>Si en lugar de tomar categoriar ordenadas se toma la proporción de una recta, donde los extremos se interpretarian como <code>completamente de acuerdo'' y</code>completamente en desacuerdo’’. Obtendríamos una regresión Beta - cero inflada.</p>
-<p>Sabemos que la densidad de una beta <span class="math inline">\(Beta(\alpha,\beta)\)</span> tiene la forma <span class="math display">\[f(y|\alpha,\beta) = \frac{y^{\alpha-1}(1-y)^{\beta-1}}{B(\alpha,\beta)}\]</span></p>
-<p>Pero reparametrizandola como <span class="math inline">\(Beta(\mu\phi,\phi (1-\phi))\)</span> tenemos:</p>
-<p><span class="math display">\[\begin{align*}
-\mathbb{E}[Y]&amp;= \mu\\\\
-Var[Y]&amp;= \frac{\mu(1-\mu)}{1+ \phi}\\\\
-f(\mu_i) &amp;= \eta_i\\
-&amp;= log(\frac{\mu_i}{1-\mu_i})\\ 
-&amp;= X_i\beta.\\
-\end{align*}\]</span></p>
+<div id="computer-experiment.-let-lambda_0-1-n-20-and-alpha-.05.-simulate-x_1-dots-x_n-sim-poissonlambda_0-and-perform-the-wald-test.-repeat-many-times-and-count-how-often-you-reject-the-null.-how-close-is-the-type-i-error-rate-to-.05" class="section level3">
+<h3>(Computer Experiment.) Let <span class="math inline">\(\lambda_0 = 1\)</span>, <span class="math inline">\(n = 20\)</span> and <span class="math inline">\(alpha = .05\)</span>. Simulate <span class="math inline">\(X_1, \dots, X_n \sim Poisson(\lambda_0)\)</span> and perform the Wald test. Repeat many times and count how often you reject the null. How close is the type I error rate to .05?</h3>
+<pre class="r"><code>#Fijando la semilla de números aleatorios.
+set.seed(1)
+
+#Parámetros de la simulación.
+lamda0 = 1
+n = 20
+alfa = 0.05
+
+#C:= limite de la región de rechazo.
+c = qnorm(1-alfa/2)
+
+resultados = sapply(1:1000000, function(s){
+  #simulando datos
+  x = rpois(n,lamda0)
+  
+  #Estimando
+  lamdaHat = mean(x)
+  
+  #Estadistico de prueba
+  W = (lamdaHat-lamda0)/sqrt(lamdaHat/n)
+  
+  #Prueba
+  test = (abs(W)&gt;c)
+  
+  return(c(W,test))
+})
+
+#Error tipo 1
+mean(resultados[2,])</code></pre>
+<pre><code>## [1] 0.0526</code></pre>
+<p><img src="Wald.png" /></p>
+<p>La prueba comete el error tipo 1 un %5.26 de las veces. Por lo que es proximo al %5, ligeramente mayor.</p>
+<p>hist(resultados[1,], main = “Estadistico de Wald”, breaks = 50, freq = FALSE, xlab = “Valor”, ylab = “Densidad”, ylim = c(0,0.5), xlim = c(-5,5))</p>
+<p>xfit&lt;-seq(min(resultados[1,])-0.1,max(resultados[1,])+0.1,length=40) yfit&lt;-dnorm(xfit,mean=mean(resultados[1,]),sd=sd(resultados[1,])) lines(xfit, yfit, col=“blue”, lwd=2)</p>
 </div>
 
 
