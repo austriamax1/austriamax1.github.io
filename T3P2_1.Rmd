@@ -1,0 +1,11 @@
+---
+title: "Análisis Post-ajuste. Regresión Poisson cero truncado."
+---
+
+### No encuentro problemas de sobredispersión o de autocorrelación.
+
+![](T3P2_grafica1.png)
+
+![](T3P2_grafica2.png)
+
+![](T3P2_grafica3.png)

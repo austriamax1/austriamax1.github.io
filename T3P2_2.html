@@ -11,7 +11,7 @@
 
 
 
-<title>Tarea 4. Pregunta 12.B.</title>
+<title>Análisis Post-ajuste. Regresión Poisson.</title>
 
 <script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -259,47 +259,18 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Tarea 4. Pregunta 12.B.</h1>
+<h1 class="title toc-ignore">Análisis Post-ajuste. Regresión Poisson.</h1>
 
 </div>
 
 
-<div id="computer-experiment.-let-lambda_0-1-n-20-and-alpha-.05.-simulate-x_1-dots-x_n-sim-poissonlambda_0-and-perform-the-wald-test.-repeat-many-times-and-count-how-often-you-reject-the-null.-how-close-is-the-type-i-error-rate-to-.05" class="section level3">
-<h3>(Computer Experiment.) Let <span class="math inline">\(\lambda_0 = 1\)</span>, <span class="math inline">\(n = 20\)</span> and <span class="math inline">\(alpha = .05\)</span>. Simulate <span class="math inline">\(X_1, \dots, X_n \sim Poisson(\lambda_0)\)</span> and perform the Wald test. Repeat many times and count how often you reject the null. How close is the type I error rate to .05?</h3>
-<pre class="r"><code>#Fijando la semilla de números aleatorios.
-set.seed(1)
-
-#Parámetros de la simulación.
-lamda0 = 1
-n = 20
-alfa = 0.05
-
-#C:= limite de la región de rechazo.
-c = qnorm(1-alfa/2)
-
-resultados = sapply(1:1000000, function(s){
-  #simulando datos
-  x = rpois(n,lamda0)
-  
-  #Estimando
-  lamdaHat = mean(x)
-  
-  #Estadistico de prueba
-  W = (lamdaHat-lamda0)/sqrt(lamdaHat/n)
-  
-  #Prueba
-  test = (abs(W)&gt;c)
-  
-  return(c(W,test))
-})
-
-#Error tipo 1
-mean(resultados[2,])</code></pre>
-<pre><code>## [1] 0.052595</code></pre>
-<p><img src="Wald.png" /></p>
-<p>La prueba comete el error tipo 1 un %5.26 de las veces. Por lo que es proximo al %5, ligeramente mayor.</p>
-<p>hist(resultados[1,], main = “Estadistico de Wald”, breaks = 50, freq = FALSE, xlab = “Valor”, ylab = “Densidad”, ylim = c(0,0.5), xlim = c(-5,5))</p>
-<p>xfit&lt;-seq(min(resultados[1,])-0.1,max(resultados[1,])+0.1,length=40) yfit&lt;-dnorm(xfit,mean=mean(resultados[1,]),sd=sd(resultados[1,])) lines(xfit, yfit, col=“blue”, lwd=2)</p>
+<div id="no-encuentro-problemas-de-sobredispersión-o-de-autocorrelación." class="section level3">
+<h3>No encuentro problemas de sobredispersión o de autocorrelación.</h3>
+<p><img src="T3P2_grafica4.png" /></p>
+<p><img src="T3P2_grafica5.png" /></p>
+<p><img src="T3P2_grafica6.png" /></p>
+<p><img src="T3P2_grafica7.png" /></p>
+<p><img src="T3P2_grafica8.png" /></p>
 </div>
 
 

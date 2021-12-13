@@ -18,13 +18,45 @@ title: "Tarea 3. Pregunta 2."
 
 La variable respuesta LOS no puede tomar el valor cero, ajusta modelos para conteos (poisson o binomial negativo) que consideren este hecho y modelos que no lo consideren y compara tus resultados. Realiza análisis post ajuste y comenta.
 
------------------------------------------------------------------------
-Considerando offset
------------------------------------------------------------------------
+
+---------------------------------------------------------------------
+Modelo Poisson Cero Truncado
+---------------------------------------------------------------------
+En este modelo consideraremos que la variable respuesta es positiva $(LOS>1)$.
 
 
------------------------------------------------------------------------
-Sin considerar Offset
------------------------------------------------------------------------
+```{r}
+modelo = vglm(LOS ~  Age + Gender + Insurer + Owner,
+                         family =  pospoisson(),
+                         data = T3P2)
+```
+
+![](PoissonPositivo.jpg)
+
+**[Analisis Post-ajuste](https://austriamax1.github.io/T3P2_1.html)**
+
+---------------------------------------------------------------------
+Regresión Poisson
+---------------------------------------------------------------------
+
+```{r}
+
+modelo2 = glm(LOS ~  Age + Gender + Insurer + Owner,
+              family =  poisson(),
+              data = T3P2)
+
+summary(modelo2)
+```
+
+**[Analisis Post-ajuste](https://austriamax1.github.io/T3P2_2.html)**
+
+----------------------------------------------------------------
+Conclusiones
+----------------------------------------------------------------
+
+El modelo cero truncado tiene el soporte correcto para los datos y eso ya es una ventaja, pero aun asi ninguno de los modelos tiene un buen ajuste (aun que no es necesariamente malo). Se puede observar que el modelo cero truncado ajusta las predicciones más alejadas del cero que la regresión Poisson. Se observan cambios relevantes en la magnitud de los parámetros (en terminos porcentuales).
+
+
+![](T3P2_ajustado.png)
 
 

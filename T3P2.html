@@ -278,6 +278,74 @@ $(document).ready(function () {
 \mbox{ Compl}.&amp; \mbox{ If there were any treatment complication: 0 means no complications, 1 means complications.}\\
 \end{align*}\]</span></p>
 <p>La variable respuesta LOS no puede tomar el valor cero, ajusta modelos para conteos (poisson o binomial negativo) que consideren este hecho y modelos que no lo consideren y compara tus resultados. Realiza análisis post ajuste y comenta.</p>
+<table style="width:97%;">
+<colgroup>
+<col width="97%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Modelo Poisson Cero Truncado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">En este modelo consideraremos que la variable respuesta es positiva <span class="math inline">\((LOS&gt;1)\)</span>.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>r modelo = vglm(LOS ~  Age + Gender + Insurer + Owner, family =  pospoisson(), data = T3P2)</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><img src="PoissonPositivo.jpg" /></td>
+</tr>
+<tr class="even">
+<td align="left"><strong><a href="https://austriamax1.github.io/T3P2_1.html">Analisis Post-ajuste</a></strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="regresión-poisson" class="section level2">
+<h2>Regresión Poisson</h2>
+<pre class="r"><code>modelo2 = glm(LOS ~  Age + Gender + Insurer + Owner,
+              family =  poisson(),
+              data = T3P2)
+
+summary(modelo2)</code></pre>
+<pre><code>## 
+## Call:
+## glm(formula = LOS ~ Age + Gender + Insurer + Owner, family = poisson(), 
+##     data = T3P2)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.4686  -0.5913  -0.1453   0.4744   3.0918  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept) 0.666335   0.076680   8.690  &lt; 2e-16 ***
+## Age         0.014151   0.005009   2.825  0.00473 ** 
+## Gender      0.003121   0.046129   0.068  0.94605    
+## Insurer     0.246073   0.046183   5.328 9.92e-08 ***
+## Owner2      0.071243   0.061044   1.167  0.24318    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for poisson family taken to be 1)
+## 
+##     Null deviance: 540.47  on 786  degrees of freedom
+## Residual deviance: 504.93  on 782  degrees of freedom
+## AIC: 2669.8
+## 
+## Number of Fisher Scoring iterations: 4</code></pre>
+<p><strong><a href="https://austriamax1.github.io/T3P2_2.html">Analisis Post-ajuste</a></strong></p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Conclusiones</td>
+</tr>
+</tbody>
+</table>
+<p>El modelo cero truncado tiene el soporte correcto para los datos y eso ya es una ventaja, pero aun asi ninguno de los modelos tiene un buen ajuste (aun que no es necesariamente malo). Se puede observar que el modelo cero truncado ajusta las predicciones más alejadas del cero que la regresión Poisson. Se observan cambios relevantes en la magnitud de los parámetros (en terminos porcentuales).</p>
+<p><img src="T3P2_ajustado.png" /></p>
 </div>
 
 

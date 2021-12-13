@@ -1,0 +1,15 @@
+---
+title: "Análisis Post-ajuste. Regresión Poisson."
+---
+
+### No encuentro problemas de sobredispersión o de autocorrelación.
+
+![](T3P2_grafica4.png)
+
+![](T3P2_grafica5.png)
+
+![](T3P2_grafica6.png)
+
+![](T3P2_grafica7.png)
+
+![](T3P2_grafica8.png)
