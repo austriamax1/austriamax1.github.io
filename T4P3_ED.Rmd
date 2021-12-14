@@ -1,0 +1,36 @@
+---
+title: "Tarea 4. Pregunta 3. Estadística Descriptiva."
+---
+
+### A continuación se mostrará algunas gráficas que describen los datos de Yogurt.
+
+-------------------------------------------------------------
+La mayoria de las observaciones tienen un pda bajo.
+
+![](T4P3Descritiva5.png)
+
+-------------------------------------------------------------
+Puede haber mucha diferencia entre los individuos, algunos variaron mucho durante el estudio y otros no.
+
+![](T4P3Descritiva1.png)
+--------------------------------------------------------------------
+El grafico siguiente es el de la edad contra pda, muestra que a mayor edad hay menor pda, PERO la caida es muy lenta (la correlación es de -0.09701717).
+
+![](T4P3Descritiva2.png)
+
+-----------------------------------------------------------------
+Las mujeres tienden a tener mayor pda.
+
+![](T4P3Descritiva3.png)
+
+
+
+
+
+-----------------------------------------------------------------
+
+Se observan pocas diferencias entre tener o no tener helicobacter, la más notoria es el número de observaciones con más de 90 pda.
+
+![](T4P3Descritiva4.png)
+
+

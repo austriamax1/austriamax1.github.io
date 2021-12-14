@@ -11,7 +11,7 @@
 
 
 
-<title>Tarea 4. Pregunta 2.</title>
+<title>Tarea 4. Pregunta 3. Estadística Descriptiva.</title>
 
 <script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -259,58 +259,47 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Tarea 4. Pregunta 2.</h1>
+<h1 class="title toc-ignore">Tarea 4. Pregunta 3. Estadística Descriptiva.</h1>
 
 </div>
 
 
-<div id="la-tabla-refiere-a-un-ensayo-clínico-cruzado-con-tres-tratamientos-para-evaluar-dos-analgésicos.-se-compara-un-placebo-a-un-tratamiento-de-dosis-baja-b-y-un-tratamiento-de-dosis-alta-c.-los-pacientes-están-divididos-aleatoriamente-en-seis-grupos-las-formas-posibles-de-administrar-los-tratamientos.-al-final-de-cada-período-cada-sujeto-responde-si-tuvo-alivio-o-no.-si-y_itk-1-denota-alivio-para-el-sujeto-i-en-la-secuencia-k-usando-el-tratamiento-t-t-abc.-ajusta-un-modelo-entre-marginal-efectos-aleatorios-y-de-transición-y-di-porque-escoges-ese." class="section level3">
-<h3>La tabla refiere a un ensayo clínico cruzado con tres tratamientos, para evaluar dos analgésicos. Se compara un placebo (A), un tratamiento de dosis baja (B) y un tratamiento de dosis alta (C). Los pacientes están divididos aleatoriamente en seis grupos, las formas posibles de administrar los tratamientos. Al final de cada período, cada sujeto responde si tuvo alivio o no. Si <span class="math inline">\(y_{itk} = 1\)</span> denota alivio para el sujeto <span class="math inline">\(i\)</span>, en la secuencia <span class="math inline">\(k\)</span>, usando el tratamiento <span class="math inline">\(t\)</span> ($t = A,B,C). Ajusta un modelo (entre marginal, efectos aleatorios y de transición) y di porque escoges ese.</h3>
-<p><img src="T4P2Tabla1.jpg" /></p>
-<p>Solución:</p>
-<p>La siguiente gráfica muestra el porcentaje de personas con alivio separado por tratamientos.</p>
-<p><img src="T4P2_descriptiva.png" /></p>
-<p>Lo anterior nos sugiere que comenzar con dosis altas no parece ser lo más provechoso. Y parece que hay un efecto de “memoria”. Por lo anterior se elige un modelo marginal con el tiempo como covariable y el tipo de tratamiento como individuo.</p>
-<pre class="r"><code>#Ajustando el modelo
-modelo = geepack::geeglm(cbind(Nalivio,Total) ~ Tipo + Dosis2 +Dosis3,
-               family = binomial(link = &quot;logit&quot;),
-               data = T4P2_tabla,
-               id = Tratamiento,
-               corstr = &quot;ar1&quot;)</code></pre>
-<pre><code>## Warning in diff(as.numeric(id)): NAs introduced by coercion</code></pre>
-<pre class="r"><code>#No se encontró evidencia de que el medicamento funcione
-summary(modelo)</code></pre>
-<pre><code>## 
-## Call:
-## geepack::geeglm(formula = cbind(Nalivio, Total) ~ Tipo + Dosis2 + 
-##     Dosis3, family = binomial(link = &quot;logit&quot;), data = T4P2_tabla, 
-##     id = Tratamiento, corstr = &quot;ar1&quot;)
-## 
-##  Coefficients:
-##              Estimate   Std.err     Wald Pr(&gt;|W|)    
-## (Intercept) -1.44e+00  5.06e-07 8.13e+12   &lt;2e-16 ***
-## TipoB       -1.70e-01  1.28e-06 1.78e+10   &lt;2e-16 ***
-## TipoC        9.35e-02  1.08e-05 7.44e+07   &lt;2e-16 ***
-## Dosis2       1.14e+00  4.69e-06 5.93e+10   &lt;2e-16 ***
-## Dosis3       1.23e+00  3.43e-06 1.29e+11   &lt;2e-16 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Correlation structure = ar1 
-## Estimated Scale Parameters:
-## 
-##             Estimate  Std.err
-## (Intercept)  0.00674 1.31e-07
-##   Link = identity 
-## 
-## Estimated Correlation Parameters:
-##       Estimate  Std.err
-## alpha   -0.298 2.53e-05
-## Number of clusters:   1  Maximum cluster size: 18</code></pre>
-<p>No hay evidencia de que el medicamento funcione mejor que el placebo. Después de las tres dosis hay una mejora, pero no hay evidencia que sea por el medicamento (simplemento por el paso del tiempo).</p>
-<pre class="r"><code>#Residuales
-plot(modelo)</code></pre>
-<p><img src="T4P2_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div id="a-continuación-se-mostrará-algunas-gráficas-que-describen-los-datos-de-yogurt." class="section level3">
+<h3>A continuación se mostrará algunas gráficas que describen los datos de Yogurt.</h3>
+<table style="width:86%;">
+<colgroup>
+<col width="86%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="left">La mayoria de las observaciones tienen un pda bajo.</td>
+</tr>
+<tr class="even">
+<td align="left"><img src="T4P3Descritiva5.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>Puede haber mucha diferencia entre los individuos, algunos variaron mucho durante el estudio y otros no.</p>
+</div>
+<div id="section" class="section level2">
+<h2><img src="T4P3Descritiva1.png" /></h2>
+<p>El grafico siguiente es el de la edad contra pda, muestra que a mayor edad hay menor pda, PERO la caida es muy lenta (la correlación es de -0.09701717).</p>
+<p><img src="T4P3Descritiva2.png" /></p>
+<table style="width:92%;">
+<colgroup>
+<col width="91%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="left">Las mujeres tienden a tener mayor pda.</td>
+</tr>
+<tr class="even">
+<td align="left"><img src="T4P3Descritiva3.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>Se observan pocas diferencias entre tener o no tener helicobacter, la más notoria es el número de observaciones con más de 90 pda.</p>
+<p><img src="T4P3Descritiva4.png" /></p>
 </div>
 
 

@@ -1,0 +1,14 @@
+---
+title: "Tarea 4. Pregunta 3. Postajuste"
+---
+
+### El problema principal de estos residuales es que entre mas grande sea el predictor lineal, crece el error de tal manera que forman lineas rectas, posiblemente por variables faltantes o porque el calculo se hizo suponiendo independencia entre las observaciones (cosa que no se cumple por ser datos panel).
+
+![](T4P3_grafica1.png)
+![](T4P3_grafica2.png)
+
+
+![](T4P3_grafica3.png)
+
+
+![](T4P3_grafica4.png)

@@ -266,6 +266,72 @@ $(document).ready(function () {
 
 <div id="los-datos-del-archivo-tarea4-representan-los-datos-para-118-sujetos-que-participaron-en-un-estudio-para-ver-si-beber-el-yogurt-después-de-una-comida-muy-contaminada-les-ayudaba-con-la-indigestión.-la-manera-de-medir-la-respuesta-era-sobre-una-línea-donde-con-una-cruz-indicaban-como-se-sentían.-la-longitud-de-la-línea-da-se-normalizo-a-100pda-cualquiera-de-las-dos-puede-ser-la-variable-respuesta.-las-variables-explicativas-son-género-edad-y-si-el-individuo-tenia-helicobacter-o-no-medida-en-dos-maneras-una-con-la-concentración-encontrada-y-otro-como-presencia-o-ausencia.-el-objetivo-es-ver-si-el-yogurt-v-es-mejor-que-el-yogurt-r." class="section level3">
 <h3>Los datos del archivo tarea4 representan los datos para 118 sujetos que participaron en un estudio para ver si beber el yogurt después de una comida muy contaminada les ayudaba con la indigestión. La manera de medir la respuesta era sobre una línea donde con una cruz indicaban como se sentían. La longitud de la línea (da) se normalizo a 100(pda), cualquiera de las dos puede ser la variable respuesta. Las variables explicativas son: género, edad, y si el individuo tenia helicobacter o no, medida en dos maneras una con la concentración encontrada y otro como presencia o ausencia. El objetivo es ver si el yogurt v es mejor que el yogurt r.</h3>
+<table style="width:93%;">
+<colgroup>
+<col width="93%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Estadística Descriptiva</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Observando la <strong><a href="https://austriamax1.github.io/T4P3_ED.html">estadistica descriptiva</a></strong>, podríamos pensar que el pda puede modelarse como una proporcion que tiene una distribución Beta que esta en función de las covariables, por eso use el paquete <strong><a href="https://cran.r-project.org/web/packages/betareg/vignettes/betareg.pdf">betareg</a></strong>.</td>
+</tr>
+<tr class="even">
+<td align="left">El modelo ajustado es el siguiente:</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math display">\[logit(\mu_i) =  \beta_0 + \sum_{i = 1}^n \beta_iX_i\]</span></td>
+</tr>
+<tr class="even">
+<td align="left">Por lo que</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math display">\[\mu_i =  \frac{\exp(\beta_0 + \sum_{i = 1}^n \beta_iX_i)}{1+\exp(\beta_0 + \sum_{i = 1}^n \beta_iX_i)}\]</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="regresión-beta" class="section level2">
+<h2>Regresión Beta</h2>
+<p>Antes de ajustar el modelo, planche las observaciones cuyo pda era exactamente 100 o 0; los reemplace por 99.999 y 0.001. Después dividi entre 100.</p>
+<pre class="r"><code>library(&quot;betareg&quot;)
+modelo = betareg(pda ~ genero + tiempo + grupodeprueba + heli,
+                  data = T4P3tabla)
+summary(modelo)</code></pre>
+<pre><code>## 
+## Call:
+## betareg(formula = pda ~ genero + tiempo + grupodeprueba + heli, 
+##     data = T4P3tabla)
+## 
+## Standardized weighted residuals 2:
+##    Min     1Q Median     3Q    Max 
+## -5.421 -0.237  0.319  0.629  6.050 
+## 
+## Coefficients (mean model with logit link):
+##                Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)    -0.26739    0.11552   -2.31    0.021 *  
+## generom        -0.61709    0.08390   -7.36  1.9e-13 ***
+## tiempo         -0.01620    0.00201   -8.07  7.0e-16 ***
+## grupodepruebav -0.51251    0.08333   -6.15  7.7e-10 ***
+## heli           -0.11492    0.09796   -1.17    0.241    
+## 
+## Phi coefficients (precision model with identity link):
+##       Estimate Std. Error z value Pr(&gt;|z|)    
+## (phi)    1.833      0.095    19.3   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1 
+## 
+## Type of estimator: ML (maximum likelihood)
+## Log-likelihood:  747 on 6 Df
+## Pseudo R-squared: 0.131
+## Number of iterations: 14 (BFGS) + 2 (Fisher scoring)</code></pre>
+<p>La interpretación de los coeficientes del modelo es similar al logistico, asi. Si el final de la linea indicaba ``muy bien’’, en ese caso el yogur V es peor que el R pues su coeficiente es negativo. Si el sentido de la linea es el contrario entonces su significado es el opuesto.</p>
+<p>El análisis <strong><a href="https://cran.r-project.org/web/packages/betareg/vignettes/T4P3_Postajuste.html">post-ajuste</a></strong> nos muestra que los residuales forman patrones de lineas, por lo que posiblemente requieran un tratamiento adicional.</p>
+<p>El ajuste del modelo no es excelente pero describe de buena manera la mayoria de las observaciones.</p>
+<p><img src="T4P3_prediccion.png" /></p>
 </div>
 
 

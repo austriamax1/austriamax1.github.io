@@ -4,3 +4,18 @@ title: "Tarea 4. Pregunta 4."
 
 ### Con los datos hospitales ajusta un modelo con efectos aleatorios ya sea un modelo mixto o hglm y compara los resultados con los de la tarea anterior.
 
+
+Se ajusto el mismo modelo que en el inciso anterior agregando el id como efecto aleatorio (el id es una variable tipo factor). De esta menera se mejora el **[análisis post-ajuste](https://cran.r-project.org/web/packages/betareg/vignettes/betareg.pdf)** y todas las variables resultaron ser significativas.
+
+
+```{r}
+library("betareg")
+modelo2 <- betareg(pda ~ genero  + tiempo +grupodeprueba + heli | nosujeto, data = T4P3tabla)
+
+summary(modelo2)
+```
+En el ajuste empeora ligeramente en terminos globales, pero mejoró ligeramente para los PDA $>$ 0.6.
+
+![](T4P4_grafica1.png)
+
+
