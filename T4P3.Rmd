@@ -33,7 +33,7 @@ summary(modelo)
 
 La interpretación de los coeficientes del modelo es similar al logistico, asi. Si el final de la linea indicaba ``muy bien'', en ese caso el yogur V es peor que el R pues su coeficiente es negativo. Si el sentido de la linea es el contrario entonces su significado es el opuesto.
 
-El análisis **[post-ajuste](https://cran.r-project.org/web/packages/betareg/vignettes/T4P3_Postajuste.html)** nos muestra que los residuales forman patrones de lineas, por lo que posiblemente requieran un tratamiento adicional.
+El análisis **[post ajuste](https://austriamax1.github.io/T4P3_Postajuste.html)** nos muestra que los residuales forman patrones de lineas, por lo que posiblemente requieran un tratamiento adicional.
 
 
 El ajuste del modelo no es excelente pero describe de buena manera la mayoria de las observaciones.

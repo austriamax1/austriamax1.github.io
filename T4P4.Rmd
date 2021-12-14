@@ -5,7 +5,7 @@ title: "Tarea 4. Pregunta 4."
 ### Con los datos hospitales ajusta un modelo con efectos aleatorios ya sea un modelo mixto o hglm y compara los resultados con los de la tarea anterior.
 
 
-Se ajusto el mismo modelo que en el inciso anterior agregando el id como efecto aleatorio (el id es una variable tipo factor). De esta menera se mejora el **[análisis post-ajuste](https://cran.r-project.org/web/packages/betareg/vignettes/betareg.pdf)** y todas las variables resultaron ser significativas.
+Se ajusto el mismo modelo que en el inciso anterior agregando el id como efecto aleatorio (el id es una variable tipo factor). De esta menera se mejora el **[análisis post-ajuste](https://austriamax1.github.io/T4P4_Posajuste.html)** y todas las variables resultaron ser significativas.
 
 
 ```{r}

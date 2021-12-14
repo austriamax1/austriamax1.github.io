@@ -266,7 +266,7 @@ $(document).ready(function () {
 
 <div id="con-los-datos-hospitales-ajusta-un-modelo-con-efectos-aleatorios-ya-sea-un-modelo-mixto-o-hglm-y-compara-los-resultados-con-los-de-la-tarea-anterior." class="section level3">
 <h3>Con los datos hospitales ajusta un modelo con efectos aleatorios ya sea un modelo mixto o hglm y compara los resultados con los de la tarea anterior.</h3>
-<p>Se ajusto el mismo modelo que en el inciso anterior agregando el id como efecto aleatorio (el id es una variable tipo factor). De esta menera se mejora el <strong><a href="https://cran.r-project.org/web/packages/betareg/vignettes/betareg.pdf">análisis post-ajuste</a></strong> y todas las variables resultaron ser significativas.</p>
+<p>Se ajusto el mismo modelo que en el inciso anterior agregando el id como efecto aleatorio (el id es una variable tipo factor). De esta menera se mejora el <strong><a href="https://austriamax1.github.io/T4P4_Posajuste.html">análisis post-ajuste</a></strong> y todas las variables resultaron ser significativas.</p>
 <pre class="r"><code>library(&quot;betareg&quot;)
 modelo2 &lt;- betareg(pda ~ genero  + tiempo +grupodeprueba + heli | nosujeto, data = T4P3tabla)
 
