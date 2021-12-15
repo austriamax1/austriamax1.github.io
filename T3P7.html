@@ -266,6 +266,58 @@ $(document).ready(function () {
 
 <div id="para-el-modelo-con-componente-aleatorio-binomial-negativo-exhibe-la-liga-canónica-y-la-interpretación-de-los-parámetros." class="section level3">
 <h3>Para el modelo con componente aleatorio binomial negativo exhibe la liga canónica y la interpretación de los parámetros.</h3>
+<p>Sabemos que la densidad de una Binomial Negativa<span class="math inline">\((k,p)\)</span> es de la forma:</p>
+<p><span class="math display">\[\begin{split}
+f(x|k,p) &amp;= {x-1 \choose k-1} p^k (1-p)^x\\\\
+&amp;=\exp\{x\log(1-p) + k \log(p) + log{x-1 \choose k-1}\}
+\end{split}\]</span></p>
+<p>De esto se desprende que:</p>
+<p><span class="math display">\[\begin{split}
+\theta &amp;= \log(1-p)\\\\
+b(\theta) &amp;= -k\log(p)\\\\
+a(\phi) &amp;= 1\\\\
+c(y,\phi) &amp;= log{x-1 \choose k-1}
+\end{split}\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[\theta = \log(1-p) \implies  p = 1 - \exp(\theta)\]</span></p>
+<p>Luego <span class="math display">\[b(\theta) = -k\log(1-\exp(\theta))\]</span></p>
+<p>Ahora calculemos su media y varianza pues seran necesarios para conecer la liga canonica.</p>
+<p><span class="math display">\[\begin{split}
+\mathbb{E}[Y] &amp;= \frac{\delta b(\theta)}{\delta \theta}\\
+&amp;= -k\frac{-\exp(\theta)}{1--\exp(\theta)}\\
+&amp;= \frac{kp}{1-p}\\
+&amp;= \mu.
+\end{split}\]</span></p>
+<p><span class="math display">\[\begin{split}
+\mathbb{E}[Y] &amp;= \frac{\delta b(\theta)}{\delta \theta}\\
+&amp;= -k\frac{-\exp(\theta)}{1--\exp(\theta)}\\
+&amp;= \frac{kp}{1-p}\\
+&amp;= \mu.
+\end{split}\]</span></p>
+<p><span class="math display">\[\begin{split}
+\mathbb{E}[Y] &amp;= \frac{\delta b(\theta)}{\delta \theta}\\
+&amp;= -k\frac{-\exp(\theta)}{1--\exp(\theta)}\\
+&amp;= \frac{kp}{1-p}\\
+&amp;= \mu.
+\end{split}\]</span></p>
+<p><span class="math display">\[\begin{split}
+Var[Y] &amp;= a(\phi)\frac{\delta^2 b(\theta)}{\delta^2 \theta}\\
+&amp;= \frac{\delta}{\delta \theta}[\frac{k \exp(\theta)}{1-\exp(\theta)}]\\
+&amp;= \frac{k\exp(\theta)[1-\exp(\theta)] + k \exp(2\theta)}{[1-\exp(\theta)]^2}\\
+&amp;= \frac{k\exp(\theta)}{[1-\exp(\theta)]^2}\\
+&amp;= \frac{k(1-p)}{p^2}\\
+&amp;= \mu.
+\end{split}\]</span></p>
+<p>Ahora solo debemos encontrar una función <span class="math inline">\(g\)</span> tal que <span class="math inline">\(g(\frac{k\exp(\theta)}{1-\exp(\theta)}) = \theta\)</span>.</p>
+<p>Así</p>
+<p><span class="math display">\[\begin{split}
+\theta &amp;= \log(\frac{k\exp(\theta)}{k})\\
+&amp;= \log(\frac{k\exp(\theta)}{k}) - \log(1)\\
+&amp;= \log(\frac{k\exp(\theta)}{k}) - \log(\frac{1-\exp(\theta)}{1-\exp(\theta)})\\
+&amp;= \log(\frac{k\exp(\theta)}{k}) - \log(\frac{1}{[1-\exp(\theta)][1+\frac{k\exp(\theta)}{k[1-\exp(\theta)]}]})\\
+&amp;\\\\
+\implies &amp; g(\mu) = \log(\frac{\frac{\mu}{k}}{1 + \frac{\mu}{k}}) \mbox{es la liga canónica}.
+\end{split}\]</span></p>
 </div>
 
 

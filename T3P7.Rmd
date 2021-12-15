@@ -4,4 +4,71 @@ title: "Tarea 3. Pregunta 7."
 
 ### Para el modelo con componente aleatorio binomial negativo exhibe la liga canónica y la interpretación de los parámetros.
 
+Sabemos que la densidad de una Binomial Negativa$(k,p)$ es de la forma:
+
+\[\begin{split}
+f(x|k,p) &= {x-1 \choose k-1} p^k (1-p)^x\\\\
+&=\exp\{x\log(1-p) + k \log(p) + log{x-1 \choose k-1}\}
+\end{split}\]
+
+De esto se desprende que:
+
+\[\begin{split}
+\theta &= \log(1-p)\\\\
+b(\theta) &= -k\log(p)\\\\
+a(\phi) &= 1\\\\
+c(y,\phi) &= log{x-1 \choose k-1}
+\end{split}\]
+
+Entonces
+
+\[\theta = \log(1-p) \implies  p = 1 - \exp(\theta)\]
+
+Luego
+\[b(\theta) = -k\log(1-\exp(\theta))\]
+
+Ahora calculemos su media y varianza pues seran necesarios para conecer la liga canonica.
+
+\[\begin{split}
+\mathbb{E}[Y] &= \frac{\delta b(\theta)}{\delta \theta}\\
+&= -k\frac{-\exp(\theta)}{1--\exp(\theta)}\\
+&= \frac{kp}{1-p}\\
+&= \mu.
+\end{split}\]
+
+\[\begin{split}
+\mathbb{E}[Y] &= \frac{\delta b(\theta)}{\delta \theta}\\
+&= -k\frac{-\exp(\theta)}{1--\exp(\theta)}\\
+&= \frac{kp}{1-p}\\
+&= \mu.
+\end{split}\]
+
+\[\begin{split}
+\mathbb{E}[Y] &= \frac{\delta b(\theta)}{\delta \theta}\\
+&= -k\frac{-\exp(\theta)}{1--\exp(\theta)}\\
+&= \frac{kp}{1-p}\\
+&= \mu.
+\end{split}\]
+
+\[\begin{split}
+Var[Y] &= a(\phi)\frac{\delta^2 b(\theta)}{\delta^2 \theta}\\
+&= \frac{\delta}{\delta \theta}[\frac{k \exp(\theta)}{1-\exp(\theta)}]\\
+&= \frac{k\exp(\theta)[1-\exp(\theta)] + k \exp(2\theta)}{[1-\exp(\theta)]^2}\\
+&= \frac{k\exp(\theta)}{[1-\exp(\theta)]^2}\\
+&= \frac{k(1-p)}{p^2}\\
+&= \mu.
+\end{split}\]
+
+Ahora solo debemos encontrar una función $g$ tal que $g(\frac{k\exp(\theta)}{1-\exp(\theta)}) = \theta$.
+
+Así
+
+\[\begin{split}
+\theta &= \log(\frac{k\exp(\theta)}{k})\\
+&= \log(\frac{k\exp(\theta)}{k}) - \log(1)\\
+&= \log(\frac{k\exp(\theta)}{k}) - \log(\frac{1-\exp(\theta)}{1-\exp(\theta)})\\
+&= \log(\frac{k\exp(\theta)}{k}) - \log(\frac{1}{[1-\exp(\theta)][1+\frac{k\exp(\theta)}{k[1-\exp(\theta)]}]})\\
+&\\\\
+\implies & g(\mu) = \log(\frac{\frac{\mu}{k}}{1 + \frac{\mu}{k}}) \mbox{es la liga canónica}.
+\end{split}\]
 

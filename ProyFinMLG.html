@@ -272,9 +272,21 @@ $(document).ready(function () {
 <p>Modelar el número de nuevas infecciones puede no ser algo sencillo, por lo que decidi modelar la volatilidad tomando las series diferenciadas.</p>
 <p><img src="ProyDescriptiva3.png" /></p>
 <p>Intente modelar la volatilidad, pero no conseguí ajustar un polinomio al parámetro de dispersión de grado mayor a 2. Mi idea es ajustar la volatilidad por periodos para análizar la correlación de los efectos aleatorios. No encontré evidencia para confirmar la hipótesis.</p>
-<pre class="r"><code>library(hglm)
-
-modelo &lt;- hglm2(SerieD ~  (1|Observacion),
+<pre class="r"><code>library(hglm)</code></pre>
+<pre><code>## Loading required package: Matrix</code></pre>
+<pre><code>## Loading required package: MASS</code></pre>
+<pre><code>## Loading required package: hglm.data</code></pre>
+<pre><code>## Loading required package: sp</code></pre>
+<pre><code>## 
+## hglm: Hierarchical Generalized Linear Models</code></pre>
+<pre><code>## Version 2.2-1 (2019-04-04) installed</code></pre>
+<pre><code>## Authors: Moudud Alam, Lars Ronnegard, Xia Shen</code></pre>
+<pre><code>## Maintainer: Xia Shen &lt;xia.shen@ki.se&gt;</code></pre>
+<pre><code>## Use citation(&quot;hglm&quot;) to know how to cite our work.</code></pre>
+<pre><code>## Discussion: https://r-forge.r-project.org/forum/?group_id=558</code></pre>
+<pre><code>## BugReports: https://r-forge.r-project.org/tracker/?group_id=558</code></pre>
+<pre><code>## VideoTutorials: http://www.youtube.com/playlist?list=PLn1OmZECD-n15vnYzvJDy5GxjNpVV5Jr8</code></pre>
+<pre class="r"><code>modelo &lt;- hglm2(SerieD ~  (1|Observacion),
              family = gaussian(link = identity),
              disp = ~ T1 + T2,
              data = Proyecto)</code></pre>
@@ -303,15 +315,15 @@ modelo &lt;- hglm2(SerieD ~  (1|Observacion),
 ## ---------------------------
 ## 
 ## Fixed effects:
-## (Intercept) 
-##      -0.006 
+##  (Intercept) 
+## -0.006001921 
 ## 
 ## Random effects:
 ##   (Intercept)| Observacion:1  (Intercept)| Observacion:10 (Intercept)| Observacion:100 
-##                        -1.48                       -10.45                         1.49 
+##                    -1.478740                   -10.454680                     1.490744 
 ## ...
 ## (Intercept)| Observacion:998 (Intercept)| Observacion:999 
-##                        0.006                        0.006 
+##                  0.006001921                  0.006001921 
 ## NOTE: to show all the random effects estimates, use print(hglm.object, print.ranef = TRUE).
 ## 
 ## ------------------------------------------
@@ -321,10 +333,10 @@ modelo &lt;- hglm2(SerieD ~  (1|Observacion),
 ## Link = log 
 ## 
 ## Effects:
-## (Intercept)          T1          T2 
-##   -5.02e-09    2.66e-20   -1.38e-20 
+##   (Intercept)            T1            T2 
+## -5.024759e-09  2.656247e-20 -1.379361e-20 
 ## 
-## Dispersion parameter for the random effects: 9.67e+127 
+## Dispersion parameter for the random effects: 9.665699e+127 
 ## 
 ## Estimation converged in 3 iterations</code></pre>
 </div>
