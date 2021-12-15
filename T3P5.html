@@ -266,6 +266,12 @@ $(document).ready(function () {
 
 <div id="considera-el-modelo-gfracp_jp_j-dots-p_k-alpha_j-beta_j-x-para-j-1-dots-k-1.-explica-por-qué-y-cómo-este-modelo-puede-ser-ajustado-por-separado-para-j-1-dots-k-1." class="section level3">
 <h3>Considera el modelo <span class="math inline">\(g(\frac{p_j}{p_j + \dots + p_K}) = \alpha_j + \beta_j&#39; x\)</span> para <span class="math inline">\(j = 1, \dots, K-1\)</span>. Explica por qué y cómo este modelo puede ser ajustado por separado para <span class="math inline">\(j = 1, \dots, K-1\)</span>.</h3>
+<p>Veamos:</p>
+<p>Comenzando con <span class="math inline">\(j = 0\)</span> tenemos que <span class="math display">\[g(\frac{p_0}{p_0 + p_1 + \dots + p_k}) =  \alpha_0 + \beta_0&#39;x \implies g(\frac{p_0}{1}) =  \alpha_0 + \beta_0&#39;x\]</span></p>
+<p>Y como <span class="math inline">\(g\)</span> es monótona y diferenciable, siempre se puede ajustar <span class="math inline">\(\alpha_0\)</span> y <span class="math inline">\(\beta_0\)</span> tal que minimize la diferencia con las observaciones.</p>
+<p>Para <span class="math inline">\(j = 1\)</span> tenemos: <span class="math display">\[g(\frac{p_1}{ p_1 + \dots + p_k}) =  \alpha_1 + \beta_1&#39;x \implies g(\frac{p_1}{ -p_0 + p_0+p_1 + \dots + p_k}) =  \alpha_0 + \beta_0&#39;x\]</span></p>
+<p>Entonces tenemos <span class="math display">\[g(\frac{p_1}{ 1-p_0}) =  \alpha_0 + \beta_0&#39;x \quad (\mbox{Con }p_0 \mbox{ conocida})\]</span></p>
+<p>Por lo tanto podemos estimar <span class="math inline">\(p_1\)</span>. Y continuamos el procedimiento hasta determinar <span class="math inline">\(p_n\)</span></p>
 </div>
 
 

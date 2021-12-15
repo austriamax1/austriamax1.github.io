@@ -267,6 +267,157 @@ $(document).ready(function () {
 <div id="los-datos-de-la-tabla-corresponden-a-compras-de-café-instantáneo.-ajusta-los-modelos-de-simetría-homogeneidad-marginal-y-cuasi-independencia-e-interpreta." class="section level3">
 <h3>Los datos de la tabla corresponden a compras de café instantáneo. Ajusta los modelos de simetría, homogeneidad marginal y cuasi independencia e interpreta.</h3>
 <p><img src="T3P3_1.jpg" /> <img src="T3P3_2.jpg" /></p>
+<p>Los modelos que se presentan describen las relaciones de transcisión entra maercas, sanka, high point y taster choice son las mas consumidas. También podemos observar que las personas que toman como primera compra high point tienden a comprar sanka en la segunda ocasión, asi también si eligen sanka en su primera compra luego escogen high point o Brim.</p>
+<p>Veamos. Primero construimos nuestra tabla</p>
+<pre class="r"><code>library(&quot;catspec&quot;)
+
+Freq &lt;- c(93, 17, 44, 7, 10, 9, 46, 11, 0, 9, 17, 11, 
+          155, 9, 12, 6, 4, 9, 15, 2,10, 4, 12, 2, 27)
+primera&lt;-gl(5,5,labels=c(&quot;High Point&quot;,&quot;Testers Choice&quot;,&quot;Sanka&quot;,&quot;Nescafe&quot;,&quot;Brim&quot;))
+segunda&lt;-gl(5,1,labels=c(&quot;High Point&quot;,&quot;Testers Choice&quot;,&quot;Sanka&quot;,&quot;Nescafe&quot;,&quot;Brim&quot;))
+Compras &lt;- data.frame(primera,segunda,Freq)</code></pre>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Modelo de cuasi independencia</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>wt &lt;- as.numeric(primera != segunda)
+qi0&lt;-glm(Freq~primera+segunda,
+         weights=wt,
+         family=poisson(),
+         data=Compras)
+summary(qi0)</code></pre>
+<pre><code>## 
+## Call:
+## glm(formula = Freq ~ primera + segunda, family = poisson(), data = Compras, 
+##     weights = wt)
+## 
+## Deviance Residuals: 
+##    Min      1Q  Median      3Q     Max  
+## -2.212  -0.338   0.000   0.277   1.775  
+## 
+## Coefficients:
+##                       Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)              3.242      0.223   14.53  &lt; 2e-16 ***
+## primeraTesters Choice   -1.110      0.226   -4.92  8.7e-07 ***
+## primeraSanka            -0.247      0.208   -1.19    0.235    
+## primeraNescafe          -1.521      0.252   -6.05  1.5e-09 ***
+## primeraBrim             -1.161      0.228   -5.09  3.6e-07 ***
+## segundaTesters Choice   -0.497      0.238   -2.08    0.037 *  
+## segundaSanka             0.468      0.219    2.14    0.032 *  
+## segundaNescafe          -1.237      0.290   -4.27  2.0e-05 ***
+## segundaBrim             -0.591      0.243   -2.43    0.015 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for poisson family taken to be 1)
+## 
+##     Null deviance: 123.040  on 19  degrees of freedom
+## Residual deviance:  13.786  on 11  degrees of freedom
+## AIC: 107.7
+## 
+## Number of Fisher Scoring iterations: 5</code></pre>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Modelo de cuasi-simetria</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>glm.qsym&lt;-glm(Freq~primera+segunda+mob.symint(primera,segunda),
+              family=poisson(),
+              data=Compras)
+
+summary(glm.qsym)</code></pre>
+<pre><code>## 
+## Call:
+## glm(formula = Freq ~ primera + segunda + mob.symint(primera, 
+##     segunda), family = poisson(), data = Compras)
+## 
+## Deviance Residuals: 
+##    Min      1Q  Median      3Q     Max  
+## -1.842  -0.193   0.000   0.200   1.022  
+## 
+## Coefficients:
+##                                 Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)                        4.533      0.104   43.71  &lt; 2e-16 ***
+## primeraTesters Choice             -2.312      0.287   -8.05  8.1e-16 ***
+## primeraSanka                      -1.531      0.221   -6.93  4.1e-12 ***
+## primeraNescafe                    -2.818      0.358   -7.88  3.4e-15 ***
+## primeraBrim                       -2.571      0.311   -8.27  &lt; 2e-16 ***
+## segundaTesters Choice             -1.712      0.243   -7.04  2.0e-12 ***
+## segundaSanka                      -0.822      0.180   -4.57  4.9e-06 ***
+## segundaNescafe                    -2.525      0.332   -7.61  2.8e-14 ***
+## segundaBrim                       -1.976      0.268   -7.38  1.6e-13 ***
+## mob.symint(primera, segunda)2:2    1.660      0.220    7.56  4.2e-14 ***
+## mob.symint(primera, segunda)2:3    1.052      0.340    3.09  0.00197 ** 
+## mob.symint(primera, segunda)2:4    0.832      0.616    1.35  0.17679    
+## mob.symint(primera, segunda)2:5    1.625      0.425    3.82  0.00013 ***
+## mob.symint(primera, segunda)3:3    1.432      0.149    9.63  &lt; 2e-16 ***
+## mob.symint(primera, segunda)3:4    1.491      0.405    3.68  0.00023 ***
+## mob.symint(primera, segunda)3:5    1.401      0.352    3.98  6.8e-05 ***
+## mob.symint(primera, segunda)4:4    1.759      0.311    5.65  1.6e-08 ***
+## mob.symint(primera, segunda)4:5    1.094      0.626    1.75  0.08019 .  
+## mob.symint(primera, segunda)5:5    1.655      0.252    6.56  5.5e-11 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for poisson family taken to be 1)
+## 
+##     Null deviance: 768.544  on 24  degrees of freedom
+## Residual deviance:   9.974  on  6  degrees of freedom
+## AIC: 152.5
+## 
+## Number of Fisher Scoring iterations: 5</code></pre>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Modelo de Homegeneidad marginal</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>glm.hrc1&lt;-glm(Freq~primera+segunda+mob.rc1(primera,
+                                           segunda,
+                                           equal=TRUE),
+              family=poisson(),
+              data=Compras)
+summary(glm.hrc1)</code></pre>
+<pre><code>## 
+## Call:
+## glm(formula = Freq ~ primera + segunda + mob.rc1(primera, segunda, 
+##     equal = TRUE), family = poisson(), data = Compras)
+## 
+## Deviance Residuals: 
+##    Min      1Q  Median      3Q     Max  
+##  -4.22   -2.70   -1.06    1.94    6.91  
+## 
+## Coefficients:
+##                                            Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)                                 4.04090    0.10796   37.43  &lt; 2e-16 ***
+## primeraTesters Choice                      -1.59523    0.26713   -5.97  2.3e-09 ***
+## primeraSanka                               -1.67496    0.25305   -6.62  3.6e-11 ***
+## primeraNescafe                             -4.09247    0.44502   -9.20  &lt; 2e-16 ***
+## primeraBrim                                -4.78284    0.49274   -9.71  &lt; 2e-16 ***
+## segundaTesters Choice                      -1.18128    0.24417   -4.84  1.3e-06 ***
+## segundaSanka                               -1.13382    0.22563   -5.03  5.0e-07 ***
+## segundaNescafe                             -3.72276    0.42243   -8.81  &lt; 2e-16 ***
+## segundaBrim                                -4.19824    0.46156   -9.10  &lt; 2e-16 ***
+## mob.rc1(primera, segunda, equal = TRUE)RC2  0.02439    0.07928    0.31    0.758    
+## mob.rc1(primera, segunda, equal = TRUE)RC3  0.10102    0.05226    1.93    0.053 .  
+## mob.rc1(primera, segunda, equal = TRUE)RC4 -0.00377    0.11621   -0.03    0.974    
+## mob.rc1(primera, segunda, equal = TRUE)U    0.31037    0.04083    7.60  2.9e-14 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for poisson family taken to be 1)
+## 
+##     Null deviance: 768.54  on 24  degrees of freedom
+## Residual deviance: 233.94  on 12  degrees of freedom
+## AIC: 364.5
+## 
+## Number of Fisher Scoring iterations: 5</code></pre>
 </div>
 
 

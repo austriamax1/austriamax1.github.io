@@ -4,3 +4,17 @@ title: "Tarea 3. Pregunta 5."
 
 ### Considera el modelo $g(\frac{p_j}{p_j + \dots + p_K}) = \alpha_j + \beta_j' x$ para $j = 1, \dots, K-1$. Explica por qué y cómo este modelo puede ser ajustado por separado para $j = 1, \dots, K-1$.
 
+Veamos:
+
+Comenzando con $j = 0$ tenemos que \[g(\frac{p_0}{p_0 + p_1 + \dots + p_k}) =  \alpha_0 + \beta_0'x \implies g(\frac{p_0}{1}) =  \alpha_0 + \beta_0'x\]
+
+Y como $g$ es monótona y diferenciable, siempre se puede ajustar $\alpha_0$ y $\beta_0$ tal que minimize la diferencia con las observaciones.
+
+Para $j = 1$ tenemos:
+\[g(\frac{p_1}{ p_1 + \dots + p_k}) =  \alpha_1 + \beta_1'x \implies g(\frac{p_1}{ -p_0 + p_0+p_1 + \dots + p_k}) =  \alpha_0 + \beta_0'x\]
+
+Entonces tenemos 
+\[g(\frac{p_1}{ 1-p_0}) =  \alpha_0 + \beta_0'x \quad (\mbox{Con }p_0 \mbox{ conocida})\]
+
+Por lo tanto podemos estimar $p_1$. Y continuamos el procedimiento hasta determinar $p_n$
+

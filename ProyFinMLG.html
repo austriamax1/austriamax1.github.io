@@ -281,23 +281,17 @@ modelo &lt;- hglm2(SerieD ~  (1|Observacion),
 <pre><code>## Warning: glm.fit: algorithm did not converge
 
 ## Warning: glm.fit: algorithm did not converge</code></pre>
-<pre><code>## Warning in hglm.default(X = X, y = Y, Z = Z, family = family,
-## rand.family = rand.family, : Residuals numerically 0 are replaced by
-## 1e-8</code></pre>
-<pre><code>## Warning in hglm.default(X = X, y = Y, Z = Z, family = family,
-## rand.family = rand.family, : Hat-values numerically 1 are replaced by 1
-## - 1e-8</code></pre>
-<pre><code>## Warning in dgamma(y, 1/disp, scale = mu * disp, log = TRUE): NaNs
-## produced</code></pre>
+<pre><code>## Warning in hglm.default(X = X, y = Y, Z = Z, family = family, rand.family = rand.family, :
+## Residuals numerically 0 are replaced by 1e-8</code></pre>
+<pre><code>## Warning in hglm.default(X = X, y = Y, Z = Z, family = family, rand.family = rand.family, : Hat-
+## values numerically 1 are replaced by 1 - 1e-8</code></pre>
+<pre><code>## Warning in dgamma(y, 1/disp, scale = mu * disp, log = TRUE): NaNs produced</code></pre>
 <pre><code>## Warning: glm.fit: algorithm did not converge</code></pre>
-<pre><code>## Warning in hglm.default(X = X, y = Y, Z = Z, family = family,
-## rand.family = rand.family, : Residuals numerically 0 are replaced by
-## 1e-8</code></pre>
-<pre><code>## Warning in hglm.default(X = X, y = Y, Z = Z, family = family,
-## rand.family = rand.family, : Hat-values numerically 1 are replaced by 1
-## - 1e-8</code></pre>
-<pre><code>## Warning in dgamma(y, 1/disp, scale = mu * disp, log = TRUE): NaNs
-## produced</code></pre>
+<pre><code>## Warning in hglm.default(X = X, y = Y, Z = Z, family = family, rand.family = rand.family, :
+## Residuals numerically 0 are replaced by 1e-8</code></pre>
+<pre><code>## Warning in hglm.default(X = X, y = Y, Z = Z, family = family, rand.family = rand.family, : Hat-
+## values numerically 1 are replaced by 1 - 1e-8</code></pre>
+<pre><code>## Warning in dgamma(y, 1/disp, scale = mu * disp, log = TRUE): NaNs produced</code></pre>
 <pre><code>## Warning: glm.fit: algorithm did not converge</code></pre>
 <pre class="r"><code>modelo</code></pre>
 <pre><code>## Call: 
@@ -313,10 +307,8 @@ modelo &lt;- hglm2(SerieD ~  (1|Observacion),
 ##      -0.006 
 ## 
 ## Random effects:
-##   (Intercept)| Observacion:1  (Intercept)| Observacion:10 
-##                        -1.48                       -10.45 
-## (Intercept)| Observacion:100 
-##                         1.49 
+##   (Intercept)| Observacion:1  (Intercept)| Observacion:10 (Intercept)| Observacion:100 
+##                        -1.48                       -10.45                         1.49 
 ## ...
 ## (Intercept)| Observacion:998 (Intercept)| Observacion:999 
 ##                        0.006                        0.006 
