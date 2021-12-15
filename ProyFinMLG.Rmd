@@ -15,7 +15,7 @@ Modelar el número de nuevas infecciones puede no ser algo sencillo, por lo que 
 
 ![](ProyDescriptiva3.png)
 
-Intente modelar la volatilidad, pero no conseguí ajustar un polinomio al parámetro de dispersión. Mi idea es ajustar la volatilidad por periodos para análizar la correlación de los efectos aleatorios. No encontré evidencia para confirmar la hipótesis.
+Intente modelar la volatilidad, pero no conseguí ajustar un polinomio al parámetro de dispersión de grado mayor a 2. Mi idea es ajustar la volatilidad por periodos para análizar la correlación de los efectos aleatorios. No encontré evidencia para confirmar la hipótesis.
 
 ```{r}
 library(hglm)

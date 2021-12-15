@@ -271,7 +271,7 @@ $(document).ready(function () {
 <p>Observando los valores que toma la tabla, podemos pensar que las infecciones compiten con su mismo tipo, pues las correlaciones entre A y B son más altas que las de A con A ó B con B. Es decir, las tipo A impiden que otras tipo A infecten y análogamente con la B.</p>
 <p>Modelar el número de nuevas infecciones puede no ser algo sencillo, por lo que decidi modelar la volatilidad tomando las series diferenciadas.</p>
 <p><img src="ProyDescriptiva3.png" /></p>
-<p>Intente modelar la volatilidad, pero no conseguí ajustar un polinomio al parámetro de dispersión. Mi idea es ajustar la volatilidad por periodos para análizar la correlación de los efectos aleatorios. No encontré evidencia para confirmar la hipótesis.</p>
+<p>Intente modelar la volatilidad, pero no conseguí ajustar un polinomio al parámetro de dispersión de grado mayor a 2. Mi idea es ajustar la volatilidad por periodos para análizar la correlación de los efectos aleatorios. No encontré evidencia para confirmar la hipótesis.</p>
 <pre class="r"><code>library(hglm)
 
 modelo &lt;- hglm2(SerieD ~  (1|Observacion),
@@ -309,17 +309,17 @@ modelo &lt;- hglm2(SerieD ~  (1|Observacion),
 ## ---------------------------
 ## 
 ## Fixed effects:
-##  (Intercept) 
-## -0.006001921 
+## (Intercept) 
+##   -0.006002 
 ## 
 ## Random effects:
 ##   (Intercept)| Observacion:1  (Intercept)| Observacion:10 
-##                    -1.478740                   -10.454680 
+##                       -1.479                      -10.455 
 ## (Intercept)| Observacion:100 
-##                     1.490744 
+##                        1.491 
 ## ...
 ## (Intercept)| Observacion:998 (Intercept)| Observacion:999 
-##                  0.006001921                  0.006001921 
+##                     0.006002                     0.006002 
 ## NOTE: to show all the random effects estimates, use print(hglm.object, print.ranef = TRUE).
 ## 
 ## ------------------------------------------
@@ -329,10 +329,10 @@ modelo &lt;- hglm2(SerieD ~  (1|Observacion),
 ## Link = log 
 ## 
 ## Effects:
-##   (Intercept)            T1            T2 
-## -5.024759e-09  2.656247e-20 -1.379361e-20 
+## (Intercept)          T1          T2 
+##  -5.025e-09   2.656e-20  -1.379e-20 
 ## 
-## Dispersion parameter for the random effects: 9.665699e+127 
+## Dispersion parameter for the random effects: 9.666e+127 
 ## 
 ## Estimation converged in 3 iterations</code></pre>
 </div>
