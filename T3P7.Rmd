@@ -37,20 +37,6 @@ Ahora calculemos su media y varianza pues seran necesarios para conecer la liga 
 \end{split}\]
 
 \[\begin{split}
-\mathbb{E}[Y] &= \frac{\delta b(\theta)}{\delta \theta}\\
-&= -k\frac{-\exp(\theta)}{1--\exp(\theta)}\\
-&= \frac{kp}{1-p}\\
-&= \mu.
-\end{split}\]
-
-\[\begin{split}
-\mathbb{E}[Y] &= \frac{\delta b(\theta)}{\delta \theta}\\
-&= -k\frac{-\exp(\theta)}{1--\exp(\theta)}\\
-&= \frac{kp}{1-p}\\
-&= \mu.
-\end{split}\]
-
-\[\begin{split}
 Var[Y] &= a(\phi)\frac{\delta^2 b(\theta)}{\delta^2 \theta}\\
 &= \frac{\delta}{\delta \theta}[\frac{k \exp(\theta)}{1-\exp(\theta)}]\\
 &= \frac{k\exp(\theta)[1-\exp(\theta)] + k \exp(2\theta)}{[1-\exp(\theta)]^2}\\
