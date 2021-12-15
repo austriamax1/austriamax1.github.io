@@ -10,7 +10,7 @@ T4P3tabla$grupodeprueba = as.factor(T4P3tabla$grupodeprueba)
 T4P3tabla$nosujeto = as.factor(T4P3tabla$nosujeto)
 
 library("betareg")
-modelo2 <- betareg(pda ~ genero  + tiempo +grupodeprueba + heli | nosujeto,
+modelo <- betareg(pda ~ genero  + tiempo +grupodeprueba + heli | nosujeto,
               data = T4P3tabla)
 
 library("betareg")

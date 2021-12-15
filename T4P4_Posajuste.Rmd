@@ -2,7 +2,7 @@
 title: "Tarea 4. Pregunta 4. Análisis Post-Ajuste"
 ---
 
-### El incluir un efecto aleatorio mejoro los residuos, ahora se ven mucho mas uniformes.
+### 
 
 ![](T4P4_post1.png)
 
@@ -10,4 +10,3 @@ title: "Tarea 4. Pregunta 4. Análisis Post-Ajuste"
 
 ![](T4P4_post3.png)
 
-![](T4P4_post4.png)

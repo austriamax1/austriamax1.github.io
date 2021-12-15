@@ -1,0 +1,7 @@
+library(VGAM)
+library(readr) 
+T3P2 <- read_csv("T3P2.csv")
+T4P2_tabla <- read_csv("T4P2_tabla.csv")
+T4P3tabla <- read_csv("T4P3tabla.csv")
+library(readr)
+Series <- read_csv("Series.csv")

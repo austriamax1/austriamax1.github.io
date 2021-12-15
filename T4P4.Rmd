@@ -5,17 +5,24 @@ title: "Tarea 4. Pregunta 4."
 ### Con los datos hospitales ajusta un modelo con efectos aleatorios ya sea un modelo mixto o hglm y compara los resultados con los de la tarea anterior.
 
 
-Se ajusto el mismo modelo que en el inciso anterior agregando el id como efecto aleatorio (el id es una variable tipo factor). De esta menera se mejora el **[análisis post-ajuste](https://austriamax1.github.io/T4P4_Posajuste.html)** y todas las variables resultaron ser significativas.
+Se ajusto el mismo modelo que en la tarea 3 pero agregando el id del hospital como efecto aleatorio (el id es una variable tipo factor). De esta menera se mejora el **[análisis post-ajuste](https://austriamax1.github.io/T4P4_Posajuste.html)**. 
+
+Las variables que antes eran significativas lo siguen siendo, y no se agregaron más. 
 
 
 ```{r}
-library("betareg")
-modelo2 <- betareg(pda ~ genero  + tiempo +grupodeprueba + heli | nosujeto, data = T4P3tabla)
-
-summary(modelo2)
+library(lme4)
+(modelo2 = glm(LOS ~  Age + Gender + Insurer + Owner,
+              family =  poisson(), data = T3P2))
+modelo3 = glmer(LOS ~  Age + Gender + Insurer + Owner + (1|Hospital),family =  poisson(), data = T3P2)
+summary(modelo3)
 ```
-En el ajuste empeora ligeramente en terminos globales, pero mejoró ligeramente para los PDA $>$ 0.6.
+El nuevo modelo tiene un ajuste moderado pero se comprueba que el efecto aleatorio resulta significativo.
+
+
+```{r}
+anova(modelo3,modelo2)
+```
 
 ![](T4P4_grafica1.png)
-
 
