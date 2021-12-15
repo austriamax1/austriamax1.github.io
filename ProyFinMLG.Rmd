@@ -4,7 +4,7 @@ title: "Proyecto Final"
 
 ### Los datos representan muestras que se examinaron como sospechosas de influenza, hay varias variables que se pueden considerar como variables respuesta, la idea es ver si el comportamiento en el tiempo ha sido diferente para los diferentes tipos de influenza, y ver si hay períodos de tiempo si alguna tipo de influenza es mas común.
 
-En la estadística descriptiva podemos comprobar que los máximos locales de las nuevas infecciones, desagregadas por tipo, ocurren en tiempos relativamente cercanos. Pero nunca en el mismo instante, ocurren un poco después o antes. Por lo anterior, decidí tomar las series diferenciadas y calcular sus correlaciones:
+En la **[estadística descriptiva](https://austriamax1.github.io/ProyFinMLG_Estadistica_Descriptiva.html)** podemos comprobar que los máximos locales de las nuevas infecciones, desagregadas por tipo, ocurren en tiempos relativamente cercanos. Pero nunca en el mismo instante, ocurren un poco después o antes. Por lo anterior, decidí tomar las series diferenciadas y calcular sus correlaciones:
 
 ![](ProyDescriptiva4.png)
 

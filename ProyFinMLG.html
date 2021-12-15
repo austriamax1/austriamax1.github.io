@@ -266,7 +266,7 @@ $(document).ready(function () {
 
 <div id="los-datos-representan-muestras-que-se-examinaron-como-sospechosas-de-influenza-hay-varias-variables-que-se-pueden-considerar-como-variables-respuesta-la-idea-es-ver-si-el-comportamiento-en-el-tiempo-ha-sido-diferente-para-los-diferentes-tipos-de-influenza-y-ver-si-hay-períodos-de-tiempo-si-alguna-tipo-de-influenza-es-mas-común." class="section level3">
 <h3>Los datos representan muestras que se examinaron como sospechosas de influenza, hay varias variables que se pueden considerar como variables respuesta, la idea es ver si el comportamiento en el tiempo ha sido diferente para los diferentes tipos de influenza, y ver si hay períodos de tiempo si alguna tipo de influenza es mas común.</h3>
-<p>En la estadística descriptiva podemos comprobar que los máximos locales de las nuevas infecciones, desagregadas por tipo, ocurren en tiempos relativamente cercanos. Pero nunca en el mismo instante, ocurren un poco después o antes. Por lo anterior, decidí tomar las series diferenciadas y calcular sus correlaciones:</p>
+<p>En la <strong><a href="https://austriamax1.github.io/ProyFinMLG_Estadistica_Descriptiva.html">estadística descriptiva</a></strong> podemos comprobar que los máximos locales de las nuevas infecciones, desagregadas por tipo, ocurren en tiempos relativamente cercanos. Pero nunca en el mismo instante, ocurren un poco después o antes. Por lo anterior, decidí tomar las series diferenciadas y calcular sus correlaciones:</p>
 <p><img src="ProyDescriptiva4.png" /></p>
 <p>Observando los valores que toma la tabla, podemos pensar que las infecciones compiten con su mismo tipo, pues las correlaciones entre A y B son más altas que las de A con A ó B con B. Es decir, las tipo A impiden que otras tipo A infecten y análogamente con la B.</p>
 <p>Modelar el número de nuevas infecciones puede no ser algo sencillo, por lo que decidi modelar la volatilidad tomando las series diferenciadas.</p>
@@ -310,16 +310,16 @@ modelo &lt;- hglm2(SerieD ~  (1|Observacion),
 ## 
 ## Fixed effects:
 ## (Intercept) 
-##   -0.006002 
+##      -0.006 
 ## 
 ## Random effects:
 ##   (Intercept)| Observacion:1  (Intercept)| Observacion:10 
-##                       -1.479                      -10.455 
+##                        -1.48                       -10.45 
 ## (Intercept)| Observacion:100 
-##                        1.491 
+##                         1.49 
 ## ...
 ## (Intercept)| Observacion:998 (Intercept)| Observacion:999 
-##                     0.006002                     0.006002 
+##                        0.006                        0.006 
 ## NOTE: to show all the random effects estimates, use print(hglm.object, print.ranef = TRUE).
 ## 
 ## ------------------------------------------
@@ -330,9 +330,9 @@ modelo &lt;- hglm2(SerieD ~  (1|Observacion),
 ## 
 ## Effects:
 ## (Intercept)          T1          T2 
-##  -5.025e-09   2.656e-20  -1.379e-20 
+##   -5.02e-09    2.66e-20   -1.38e-20 
 ## 
-## Dispersion parameter for the random effects: 9.666e+127 
+## Dispersion parameter for the random effects: 9.67e+127 
 ## 
 ## Estimation converged in 3 iterations</code></pre>
 </div>
