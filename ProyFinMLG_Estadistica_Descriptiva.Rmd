@@ -1,0 +1,16 @@
+---
+title: "Proyecto Final: Estadística descriptiva"
+---
+
+### 
+
+Esta gráfica muestra las temporadas más altas de contagíos.
+
+![](ProyDescriptiva1.png)
+
+En la siguiente imágen se muestran las series de tiempo de las nuevas infecciones por tipo, podemos observar que los máximos locales con poca diferencia entre si.
+
+![](ProyDescriptiva2.png)
+
+Tomando las series diferenciadas se puede observar mejor la voltatilidad de las series.
+![](ProyDescriptiva3.png)

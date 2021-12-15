@@ -11,7 +11,7 @@
 
 
 
-<title>Tarea 4. Pregunta 4.</title>
+<title>Proyecto Final</title>
 
 <script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -259,13 +259,82 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Tarea 4. Pregunta 4.</h1>
+<h1 class="title toc-ignore">Proyecto Final</h1>
 
 </div>
 
 
 <div id="los-datos-representan-muestras-que-se-examinaron-como-sospechosas-de-influenza-hay-varias-variables-que-se-pueden-considerar-como-variables-respuesta-la-idea-es-ver-si-el-comportamiento-en-el-tiempo-ha-sido-diferente-para-los-diferentes-tipos-de-influenza-y-ver-si-hay-períodos-de-tiempo-si-alguna-tipo-de-influenza-es-mas-común." class="section level3">
 <h3>Los datos representan muestras que se examinaron como sospechosas de influenza, hay varias variables que se pueden considerar como variables respuesta, la idea es ver si el comportamiento en el tiempo ha sido diferente para los diferentes tipos de influenza, y ver si hay períodos de tiempo si alguna tipo de influenza es mas común.</h3>
+<p>En la estadística descriptiva podemos comprobar que los máximos locales de las nuevas infecciones, desagregadas por tipo, ocurren en tiempos relativamente cercanos. Pero nunca en el mismo instante, ocurren un poco después o antes. Por lo anterior, decidí tomar las series diferenciadas y calcular sus correlaciones:</p>
+<p><img src="ProyDescriptiva4.png" /></p>
+<p>Observando los valores que toma la tabla, podemos pensar que las infecciones compiten con su mismo tipo, pues las correlaciones entre A y B son más altas que las de A con A ó B con B. Es decir, las tipo A impiden que otras tipo A infecten y análogamente con la B.</p>
+<p>Modelar el número de nuevas infecciones puede no ser algo sencillo, por lo que decidi modelar la volatilidad tomando las series diferenciadas.</p>
+<p><img src="ProyDescriptiva3.png" /></p>
+<p>Intente modelar la volatilidad, pero no conseguí ajustar un polinomio al parámetro de dispersión. Mi idea es ajustar la volatilidad por periodos para análizar la correlación de los efectos aleatorios. No encontré evidencia para confirmar la hipótesis.</p>
+<pre class="r"><code>library(hglm)
+
+modelo &lt;- hglm2(SerieD ~  (1|Observacion),
+             family = gaussian(link = identity),
+             disp = ~ T1 + T2,
+             data = Proyecto)</code></pre>
+<pre><code>## Warning: glm.fit: algorithm did not converge
+
+## Warning: glm.fit: algorithm did not converge</code></pre>
+<pre><code>## Warning in hglm.default(X = X, y = Y, Z = Z, family = family,
+## rand.family = rand.family, : Residuals numerically 0 are replaced by
+## 1e-8</code></pre>
+<pre><code>## Warning in hglm.default(X = X, y = Y, Z = Z, family = family,
+## rand.family = rand.family, : Hat-values numerically 1 are replaced by 1
+## - 1e-8</code></pre>
+<pre><code>## Warning in dgamma(y, 1/disp, scale = mu * disp, log = TRUE): NaNs
+## produced</code></pre>
+<pre><code>## Warning: glm.fit: algorithm did not converge</code></pre>
+<pre><code>## Warning in hglm.default(X = X, y = Y, Z = Z, family = family,
+## rand.family = rand.family, : Residuals numerically 0 are replaced by
+## 1e-8</code></pre>
+<pre><code>## Warning in hglm.default(X = X, y = Y, Z = Z, family = family,
+## rand.family = rand.family, : Hat-values numerically 1 are replaced by 1
+## - 1e-8</code></pre>
+<pre><code>## Warning in dgamma(y, 1/disp, scale = mu * disp, log = TRUE): NaNs
+## produced</code></pre>
+<pre><code>## Warning: glm.fit: algorithm did not converge</code></pre>
+<pre class="r"><code>modelo</code></pre>
+<pre><code>## Call: 
+## hglm2.formula(meanmodel = SerieD ~ (1 | Observacion), data = Proyecto, 
+##     family = gaussian(link = identity), disp = ~T1 + T2)
+## 
+## ---------------------------
+## Estimates of the mean model
+## ---------------------------
+## 
+## Fixed effects:
+##  (Intercept) 
+## -0.006001921 
+## 
+## Random effects:
+##   (Intercept)| Observacion:1  (Intercept)| Observacion:10 
+##                    -1.478740                   -10.454680 
+## (Intercept)| Observacion:100 
+##                     1.490744 
+## ...
+## (Intercept)| Observacion:998 (Intercept)| Observacion:999 
+##                  0.006001921                  0.006001921 
+## NOTE: to show all the random effects estimates, use print(hglm.object, print.ranef = TRUE).
+## 
+## ------------------------------------------
+## Estimates of the residual dispersion model
+## ------------------------------------------
+## 
+## Link = log 
+## 
+## Effects:
+##   (Intercept)            T1            T2 
+## -5.024759e-09  2.656247e-20 -1.379361e-20 
+## 
+## Dispersion parameter for the random effects: 9.665699e+127 
+## 
+## Estimation converged in 3 iterations</code></pre>
 </div>
 
 

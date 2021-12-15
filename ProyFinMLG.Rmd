@@ -1,6 +1,28 @@
 ---
-title: "Tarea 4. Pregunta 4."
+title: "Proyecto Final"
 ---
 
 ### Los datos representan muestras que se examinaron como sospechosas de influenza, hay varias variables que se pueden considerar como variables respuesta, la idea es ver si el comportamiento en el tiempo ha sido diferente para los diferentes tipos de influenza, y ver si hay períodos de tiempo si alguna tipo de influenza es mas común.
 
+En la estadística descriptiva podemos comprobar que los máximos locales de las nuevas infecciones, desagregadas por tipo, ocurren en tiempos relativamente cercanos. Pero nunca en el mismo instante, ocurren un poco después o antes. Por lo anterior, decidí tomar las series diferenciadas y calcular sus correlaciones:
+
+![](ProyDescriptiva4.png)
+
+Observando los valores que toma la tabla, podemos pensar que las infecciones compiten con su mismo tipo, pues las correlaciones entre A y B son más altas que las de A con A ó B con B. Es decir, las tipo A impiden que otras tipo A infecten y análogamente con la B.
+
+
+Modelar el número de nuevas infecciones puede no ser algo sencillo, por lo que decidi modelar la volatilidad tomando las series diferenciadas.
+
+![](ProyDescriptiva3.png)
+
+Intente modelar la volatilidad, pero no conseguí ajustar un polinomio al parámetro de dispersión. Mi idea es ajustar la volatilidad por periodos para análizar la correlación de los efectos aleatorios. No encontré evidencia para confirmar la hipótesis.
+
+```{r}
+library(hglm)
+
+modelo <- hglm2(SerieD ~  (1|Observacion),
+             family = gaussian(link = identity),
+             disp = ~ T1 + T2,
+             data = Proyecto)
+modelo
+```
